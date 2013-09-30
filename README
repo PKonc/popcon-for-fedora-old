@@ -1,0 +1,134 @@
+
+DEBIAN PACKAGE POPULARITY CONTEST - Avery Pennarun <apenwarr@debian.org>
+=================================
+
+This package contains a script, /usr/sbin/popularity-contest, which
+generates a list of the packages installed on your system, in order of
+most-recently-used to least-recently-used.  The simplest way to use this
+information is to help clean up your hard drive by removing unused packages. 
+
+For example,
+	popularity-contest | grep '<OLD>'
+will show you a list of packages you haven't used in a while.  Note that
+this output isn't totally accurate: some packages appear "old" but you can't
+remove them because other (non-old) packages depend on them.  Shared library
+packages are particularly bad this way because it's impossible to tell when
+a library was last used.
+
+The popularity-contest output looks like this:
+
+  POPULARITY-CONTEST-0 TIME:914183330 ID:b92a5fc1809d8a95a12eb3a3c84166dd
+  914183333 909868335 grep /bin/fgrep
+  914183333 909868280 findutils /usr/bin/find
+  914183330 909885698 dpkg-awk /usr/bin/dpkg-awk
+  914183330 909868577 gawk /usr/bin/gawk
+  [...more lines...]
+  END-POPULARITY-CONTEST-0 TIME:914183335
+
+The first and last lines allow you to put more than one set of
+popularity-contest results into a single file and then split them up
+easily later.
+
+The rest of the lines are package entries, one line for each package
+installed on your system.  They have the format:
+
+	<atime> <ctime> <package-name> <mru-program> <tag>
+
+<package-name> is the name of the Debian package that contains <mru-program>. 
+<mru-program> is the most recently used program, static library, or header
+(.h) file in the package.
+
+<atime> and <ctime> are the access time and creation time of the
+<mru-program> on your disk, respectively, represented as the number of
+seconds since midnight GMT on January 1, 1970 (i.e. in Unix time_t format). 
+Linux updates <atime> whenever you open the file; <ctime> was set when you
+first installed the package.
+
+<tag> is determined by popularity-contest depending on <atime>, <ctime>, and
+the current date.  <tag> can be RECENT-CTIME, OLD, or NOFILES.
+
+RECENT-CTIME means that atime is very close to ctime; it's impossible to
+tell whether the package was used recently or not, since <atime> is also
+updated when <ctime> is set.  Normally, this happens because you have
+recently upgraded the package to a new version, resetting the <ctime>.
+
+OLD means that the <atime> is more than a month ago; you haven't used the
+package for more than a month.
+
+NOFILES means that no files in the package seemed to be programs, so
+<atime>, <ctime>, and <mru-program> are invalid.
+
+
+PARTICIPATING IN THE PUBLIC SURVEY
+==================================
+
+You can help out the Debian Project by sending your popularity-contest
+results to us anonymously.  With information from enough people, we can
+determine which packages are most often used, which are often installed but
+not used, and which are nearly never used.  That way, we can help people
+make decisions about which packages should fit on the first Debian install
+CD, for example, or which packages are most important for an FTP mirror site
+to keep.
+
+  !!!!
+
+SECURITY NOTE: it's impossible to make a submission completely anonymous,
+since Internet servers tend to add headers and log messages along the way. 
+Our receiver program at debian throws away this information as soon as
+possible so no one will see it, but if you're really paranoid you might not
+want to participate.
+
+  !!!!
+
+The popularity-contest package comes with a cron task to send the
+information out to us each week.  You can change where the submissions go
+by editing /etc/popularity-contest.conf.  Normally, you will send the
+results to:
+		survey@popcon.debian.org
+	
+The result of the survey is available at
+
+		http://popcon.debian.org/
+
+You can find some sample analysis scripts in
+/usr/share/doc/popularity-contest as part of this package.
+
+RELATED PROJECTS
+================
+
+There are several projects trying to count users and machines.  First and
+foremost is the Linux Counter at http://counter.li.org/.  It tries to 
+estimate the amount of Linux users worldwide.  Second, we are aware of
+separate popcon installations at Fink, http://fink.opendarwin.org/popcon/
+and Ubuntu, http://popcon.ubuntu.com, receiving information about the Ubuntu
+users.  We are sure there are others.
+
+INSTALLATION PRESEEDING
+=======================
+
+The package support preseeding during installation to change the URL
+used to submit reports.  The template name is
+'popularity-contest/submiturls', and it expect one or more space
+separated URLs to use when submitting.
+
+QUESTIONS ?
+===========
+
+Please look at the FAQ in /usr/share/doc/popularity-contest/FAQ
+or for an up-to-date version, online at http://popcon.debian.org/FAQ
+
+
+FINDING THE SOURCE
+==================
+
+This package is being maintained in Subversion using Alioth.  The project summary
+page is available from <URL:https://alioth.debian.org/projects/popcon/>.
+The project home page is at <URL:http://popcon.alioth.debian.org/>.
+
+REPORTING BUGS
+==============
+
+Report bugs into the Debian Bug Tracking System.  See
+<URL:http://bugs.debian.org/> for instructions.  If you want to get in
+touch with the popularity contest maintainers, send an email to
+popcon-developers@lists.alioth.debian.org.

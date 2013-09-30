@@ -1,0 +1,111 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity_contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-09-18 03:28-0300\n"
+"Last-Translator: André Luís Lopes <andrelop@debian.org>\n"
+"Language-Team: Debian-BR Project <debian-l10n-portuguese@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Participar do concurso de utilização de pacotes ?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"O sistema pode fornecer anonimamente aos desenvolvedores da "
+"distribuição estatísticas sobre os pacotes mais utilizados em "
+"seu sistema. Esta informação influencia decisões como quais "
+"pacotes deverão ser colocados no primeiro CD da distribuição."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Caso você opte por participar, o script de envio automático será executado "
+"uma vez por semana, enviando as estatísticas para os desenvolvedores da "
+"distribuição. As estatísticas coletadas podem ser visualizadas em "
+"http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Sua escolha pode ser modificada posteriormente através da execução do "
+"comando \"dpkg-reconfigure popularity-contest\"."
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "A geração do identificador único de host falhou"
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "O script de instalação não pôde gerar um identificador único de host. "
+#~ "Esse é um erro fatal, uma vez que todos os hosts que enviam informações "
+#~ "precisam possuir um identificador único."
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Por favor, relate este problema enviando um relatório de bug para o "
+#~ "pacote popularity-contest e inclua informações sobre a sua configuração."
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "Utilizar HTTP para enviar os relatórios ?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "Caso você não queira utilizar HTTP, e-mail será utilizado."
+
+#~ msgid ""
+#~ "This information helps us make decisions such as which packages should go "
+#~ "on the first Debian CD.  Also, we can improve future versions of Debian "
+#~ "so that the most popular packages are the ones which are installed "
+#~ "automatically for new users."
+#~ msgstr ""
+#~ "Essa informação nos ajudará a tomar decisões como quais pacotes deverão "
+#~ "ser colocados no primeiro CD Debian. Também será possível melhorar "
+#~ "futuras versões do Debian de forma que os pacotes mais populares sejam "
+#~ "instalados automaticamente para novos usuários."
+
+#~ msgid ""
+#~ "(NOTE: e-mail servers add their own tracing information and your data "
+#~ "won't be completely anonymous while in transit.)"
+#~ msgstr ""
+#~ "(NOTA: Servidores de e-mail adicionam suas próprias informações de "
+#~ "rastreamento e seus dados não ficarão completamente anônimos enquanto "
+#~ "estiverem em trânsito.)"

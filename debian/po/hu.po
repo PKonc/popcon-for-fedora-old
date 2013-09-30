@@ -1,0 +1,74 @@
+# translation of popularity-contest_debian_po_hu.po to Hungarian
+# Translators, if you are not familiar with the PO format, gettext
+# documentation is worth reading, especially sections dedicated to
+# this format, e.g. by running:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Some information specific to po-debconf are available at
+# /usr/share/doc/po-debconf/README-trans
+# or http://www.debian.org/intl/l10n/po-debconf/README-trans
+# Developers do not need to manually edit POT or PO files.
+# , 2006.
+# Hajnalka Hegedus <heha@inf.elte.hu>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest_debian_po_hu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-10-02 22:15+0100\n"
+"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
+"Language-Team: Debian L10n Hungarian <debian-l10n-hungarian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural>1;\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Részt veszel a csomaghasználat felmérésben?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "The system may anonymously supply the distribution developers with statistics about the most used packages on this system.  This information influences decisions such as which packages should go on the first distribution CD."
+msgstr "Névtelenül statisztikákat közölhetsz a Debian fejlesztőivel a leggyakrabban használt Debian csomagokról. E statisztikák alapján szoktak dönteni (többek közt) az első Debian-CD-n szereplő programok listájáról."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "If you choose to participate, the automatic submission script will run once every week, sending statistics to the distribution developers. The collected statistics can be viewed on http://popcon.debian.org/."
+msgstr "Ha a részvétel mellett döntesz, az adatok beküldését végző program hetente lefut és statisztikákat juttat el a Debian fejlesztőkhöz. Az összegyűjtött statisztikák címe: http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "This choice can be later modified by running \"dpkg-reconfigure popularity-contest\"."
+msgstr "A választás később a \"dpkg-reconfigure popularity-contest\" paranccsal módosítható."
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "Egyedi gazdagép-azonosító előállítása nem sikerült"
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "A telepítő nem tudott egy egyedi gazdagép-azonosítót előállítani. Ez "
+#~ "megkerülhetetlen hiba, hiszen az adatszolgáltatásban résztvevő minden "
+#~ "gépet külön azonosítónak kell jelölnie."
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Kérlek, jelentsd be a popularity-contest csomag e hibáját, és a "
+#~ "hibajelentésben írd le az érintett gép jellemzőit is."
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "HTTP-t használjak a jelentések küldéséhez?"
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr ""
+#~ "Ha nem kívánsz HTTP-t használni, a jelentések e-mailben kerülnek "
+#~ "elküldésre."
+

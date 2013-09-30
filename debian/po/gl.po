@@ -1,0 +1,85 @@
+# Galician translation of the popularity-contest debconf template
+#
+# Jacobo Tarrío <jtarrio@debian.org>, 2005.
+# Jorge Barreiro <yortx.barry@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2012-06-11 00:42+0200\n"
+"Last-Translator: Jorge Barreiro <yortx.barry@gmail.com>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Participar na enquisa de utilización dos paquetes?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"O sistema pódelle fornecer aos desenvolvedores da distribución estatísticas "
+"sobre os paquetes máis utilizados neste sistema. Esta información ten "
+"influencia sobre decisións como que paquetes van no primeiro CD da "
+"distribución."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Se quere participar, o programa de envío automático executarase unha vez por "
+"semana, enviándolle estatísticas aos desenvolvedores da distribución. As "
+"estatísticas colleitadas pódense ver en http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Esta elección pódese cambiar máis tarde executando \"dpkg-reconfigure "
+"popularity-contest\"."
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "A xeración do identificador único da máquina fallou"
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "O guión de instalación non puido xerar un identificador único de máquina. "
+#~ "Este é un erro grave, xa que tódalas máquinas que envían información "
+#~ "teñen que ter un identificador único."
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Informe deste problema poñéndolle un informe de erro ao paquete "
+#~ "popularity-contest, e inclúa información sobre a súa configuración."
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "¿Empregar HTTP para enviar os informes?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "Se non quere empregar HTTP, hase empregar email no seu canto."

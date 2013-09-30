@@ -1,0 +1,65 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-07-29 12:23+0200\n"
+"Last-Translator: Priti Patil <prithisd@gmail.com>\n"
+"Language-Team: Marathi, janabhaaratii, C-DAC, Mumbai "
+"<janabhaaratii@cdacmumbai.in>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "पॅकेज सर्वेक्षणात सहभागी होणार का?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"हि सिस्टिम सर्वात जास्त वापरले गेलेली पॅकेजेसचि आकडेवारी अनामिकपणे वितरण डेव्हलपरकडे पाठवु "
+"शकते. हि माहिती कोणती पॅकेजेस प्रथम वितरण सीडीवर उपलब्ध असावीत ह्याचा निर्णय घेण्यास "
+"मदत करते."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"जर तुम्ही सहभागी होणार असाल तर, स्वयंचलीत स्क्रिप्ट/परिभाषा आठवडयातुन एकदा क्रियाशील "
+"होईल आणि ते वितरण डेव्हलपरकडे पाठविले जाईल. जमा झालेली आकडेवारी http://popcon."
+"debian.org/ वर पाहता येईल."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"हा पर्याय \"dpkg-reconfigure लोकप्रियता स्पर्धा\" या आज्ञेद्वारा बदलता येऊ शकतो."

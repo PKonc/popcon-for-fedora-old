@@ -1,0 +1,58 @@
+# Serbian/Latin messages for popularity-contest.
+# Copyright (C) 2010 Software in the Public Interest, Inc.
+# This file is distributed under the same license as the popularity-contest package.
+# Janos Guljas <janos@janos.in.rs>, 2010.
+# Karolina Kalic <karolina@janos.in.rs>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest 1.48\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2010-08-09 00:07+0100\n"
+"Last-Translator: Janos Guljas <janos@janos.in.rs>\n"
+"Language-Team: Serbian\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Učestvovati u statistici popularnosti paketa?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Sistem može anonimno da dostavlja podatke programerima distribucije o "
+"paketim akoji se najviše koriste na sistemu. Ova informacija utiče na "
+"odluku, kao što je, koji paketi će biti na prvom instalacionom disku."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Ako izaberete da učestvujete, automatska skripta će slati statistiku jednom "
+"nedeljno programerima distribucije. Sakupljena statistika može da se vidi na "
+"http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Ovaj izbor se možete promeniti pomoću „dpkg-reconfigure popularity-contest“."

@@ -1,0 +1,69 @@
+# translation of lt.po to Lithuanian
+# Translators, if you are not familiar with the PO format, gettext
+# documentation is worth reading, especially sections dedicated to
+# this format, e.g. by running:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Some information specific to po-debconf are available at
+# /usr/share/doc/po-debconf/README-trans
+# or http://www.debian.org/intl/l10n/po-debconf/README-trans#
+# Developers do not need to manually edit POT or PO files.
+# Gintautas Miliauskas <gintas@akl.lt>, 2004, 2005, 2006.
+# Rimas Kudelis <rq@akl.lt>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: lt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2012-06-02 19:03+0300\n"
+"Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Ar dalyvauti paketų naudojimo statistikoje?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Sistema gali anonimiškai siųsti distribucijos kūrėjams dažniausiai naudojamų "
+"paketų šiame kompiuteryje statistiką. Ši informacija praverčia priimant "
+"sprendimus, pavyzdžiui, kurie paketai turėtų būti įtraukti į pirmąjį "
+"distribucijos CD."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Jei nuspręsite dalyvauti, kartą per savaitę bus automatiškai paleidžiamas "
+"scenarijus, siųsiantis statistinius duomenis distribucijos kūrėjams. "
+"Surinktą statistiką galima rasti adresu http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Savo sprendimą dėl dalyvavimo vėliau galėsite pakeisti, įvykdydami komandą "
+"„dpkg-reconfigure popularity-contest“."

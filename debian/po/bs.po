@@ -1,0 +1,68 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest_debian\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-10-31 15:29+0100\n"
+"Last-Translator: Safir Secerovic <sapphire@linux.org.ba>\n"
+"Language-Team: Bosnian <lokal@lugbih.org>\n"
+"Language: bs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.5\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Da li želite sudjelovati u anketi o korištenju paketa?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Sistem može anonimno poslati razvijateljima distribucije satistike o "
+"najčešće korištenim paketima na ovom sistemu.  Ova informacije utiču na "
+"odluke poput one koji bi se paketi trebali nalaziti na prvom CD-u "
+"distribucije."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Ako odlučite sudjelovati, skripta za automatsko podnošenje podataka će se "
+"pokretati jednom sedmično i slati statistike razvijateljima distribucije. "
+"Prikupljene statistike se mogu vidjeti na http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Ovu odluku možete kasnije promijeniti pokretanjem \"dpkg-reconfigure "
+"popularity-contest\"."

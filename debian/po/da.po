@@ -1,0 +1,94 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+# Claus Hindsgaul <claus.hindsgaul@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-09 13:31-0600\n"
+"PO-Revision-Date: 2006-10-02 08:41+0200\n"
+"Last-Translator: Claus Hindsgaul <claus.hindsgaul@gmail.com>\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid "Participate in the package usage survey?"
+msgstr "Vil du deltage i undersøgelsen om brug af pakkernes?"
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"System kan anonymt forsyne distributionsudviklerne med statistikker om "
+"de mest benyttede pakker på dette system. Disse oplysninger har "
+"indflydelse på beslutninger som f.eks. hvilke pakker der skal være på den "
+"første cd i distributionen."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Hvis du vælger at deltage, vil et automatisk script køre hver uge, som "
+"sender statistikkerne til distributionsdviklerne. De indsamlede statistikker "
+"kan ses på ttp://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:1001
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Du kan ændre denne indstilling senere ved at køre: \"dpkg-reconfigure popularity-"
+"contest\""
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "Oprettelse af unik værts-identificering fejlede"
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "Installationen kunne ikke oprette en unik værts-identificerings. Dette er "
+#~ "et stort problem, eftersom det er et krav at alle værter der sender "
+#~ "information skal have en unik nøgle."
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Du bør rapportere dette problem som en fejlrapport imod popularity-"
+#~ "contest pakken og inkludere oplysninger om din opsætning."
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "Brug HTTP til at indsende rapporter?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "Hvis du ikke vil bruge HTTP, vil email bruges i stedet."
+

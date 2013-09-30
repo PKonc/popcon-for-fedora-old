@@ -1,0 +1,118 @@
+      Popularity-contest Frequently Asked Questions.
+
+Q) What information is reported by popularity-contest ?
+
+A) popularity-contest reports the system vendor [1], the system architecture
+   you use, the version of popularity-contest you use and the list of packages
+   installed on your system. For each package, popularity-contest looks at the
+   most recently used (based on atime) files, and reports the filename, its
+   last access time (atime) and last change time (ctime).  However, some files
+   are not considered, because they have unreliable atime. For privacy reasons,
+   the times are truncated to multiple of twelve hours.
+
+   [1] i.e. the dpkg Vendor field, see dpkg-vendor(1).
+
+Q) What is considered a 'vote' for a package ?
+
+A) A computer 'vote' for a package if according to the data provided in the
+   report, a program provided or depending on the package was used less than
+   thirty days ago. This computation is performed by the popcon server.  
+
+Q) Can submissions be eavesdropped ?
+
+A) Yes, however if the package gnupg is installed and ENCRYPT is set to 'maybe' 
+   or 'yes' in /etc/popularity-contest.conf, the reports are encrypted using
+   public key cryptography, so the eavesdropper should not be able to decrypt
+  them. The default is 'maybe' with popularity-contest 1.60.
+
+Q) What are the privacy considerations for popularity-contest ?
+
+A) Each popularity-contest host is identified by a random 128bit uuid
+   (MY_HOSTID in /etc/popularity-contest.conf). This uuid is used to
+   track submissions issued by the same host. It should be kept secret.
+   The reports are sent by email or HTTP to the popcon server.  The
+   server automatically extracts the report from the email or HTTP and
+   stores it in a database for a maximum of 20 days or until the host
+   sends a new report. This database is readable only by Debian
+   Developers.  The emails are readable only by the server admins.
+   Every day, the server computes a summary and post it on
+   <http://popcon.debian.org/all-popcon-results.txt.gz>. This summary
+   is a merge of all the submissions and does not include uuids.
+
+   Known weaknesses of the system:
+
+   1) Someone who knows that you are very likely to use a particular package
+   reported by only one person (e.g. you are the maintainer) might infer you
+   are not at home when the package is not reported anymore. However this is
+   only a problem if you are gone for more than two weeks if the computer is
+   shut-down and 23 days if it is let idle.
+
+   2) Unofficial and local packages are reported. This can be an issue
+   due to 2) above, especially for custom-build kernel packages.
+   We are evaluating how far we can alleviate this problem.
+   
+Q) /usr is mounted with 'noatime'.
+
+A) popularity-contest relies on atime to know what packages were used during
+   the last month. This means you will only report the list of packages
+   installed without usage information.
+
+Q) When does popularity-contest run ?
+
+A) popularity-contest is run by the daily cron job 
+"/etc/cron.daily/popularity-contest", but only one day in the week,
+which is specified in the configuration file. This day is chosen randomly
+to spread the load on the server.
+
+Under the default configuration of cron, this happens at 6:47 in the morning.
+This can be changed by editing /etc/crontab but if your computer is not always
+turned on, we really recommend you install the anacron package.
+
+If /etc/cron.daily/popularity-contest has not run for more than a week, it will
+accept to run any day.
+
+Q) I don't want popcon email to be sent by root! How can I change that ?
+
+A) To send as user 'myuser', edit the function 'do_sendmail' in
+/etc/cron.daily/popularity-contest to 
+
+  do_sendmail()
+  {
+    su myuser -s /bin/sh -c "/usr/sbin/sendmail -oi \"$MAILTO\""
+  }
+
+Q) How can I pass extra options to sendmail ?
+
+A) Add a line in /etc/popularity-contest.conf as follow
+MTAOPS="-opt1 -opt2 -opt3"
+
+Q) How can I prevent popularity-contest from sending reports via email?
+
+A) This is not recommended. Reports are sent by email only when the HTTP
+submission fails, which is generally caused by a temporary lack of internet
+connectivity. By contrast, reports sent by email are stored in the mail server
+queue until the internet connectivity is back.
+
+Nevertheless, you can prevent popularity-contest from sending reports via email
+by adding
+MAILTO= 
+to /etc/popularity-contest.conf
+
+Q) How can I specify a HTTP proxy server for the HTTP submission ?
+
+Popularity-contest honors the environment variable http_proxy that you can
+set in /etc/environment. Alternatively you can specify a proxy server
+specifically for popularity-contest by adding a line 
+
+HTTP_PROXY="http://<proxy hostname>:<port>"
+to /etc/popularity-contest.conf.
+
+Q) How can I convert the timestamps in the popcon report to human-readable 
+dates ?
+
+A) The timestamps are just the number of seconds since the epoch, namely
+1970-01-01 00:00:00 UTC.  You can convert e.g. 1139229934 to a human-readable
+date with
+
+  date -d '@1139229934'
+

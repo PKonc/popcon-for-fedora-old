@@ -1,0 +1,70 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-08-07 13:19+0200\n"
+"Last-Translator: Thijs Kinkhorst <thijs@debian.org>\n"
+"Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#  Description
+#  Description
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Wilt u meewerken aan het onderzoek naar het gebruik van pakketten?"
+
+#  Description
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"U kunt uw systeem instellen zodat anonieme statistieken naar de "
+"ontwikkelaars van de distributie verstuurd worden. Deze statistieken hebben "
+"betrekking op welke pakketten het meest gebruikt worden, en beïnvloeden "
+"beslissingen zoals welke paketten op de eerste installatie-CD terecht komen."
+
+#  Description
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Indien u wilt deelnemen zal eenmaal per week een script uitgevoerd worden "
+"dat de statistieken naar de ontwikkelaars stuurt. De verzamelde statistieken "
+"kunnen bekeken worden op http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"U kunt uw keuze altijd nog herzien via het commando 'dpkg-reconfigure "
+"popularity-contest'"
