@@ -25,9 +25,21 @@
 use strict;
 use 5.6.0;
 
-my $dpkg_db="/var/lib/dpkg/info";
-my $dpkg_origin="/etc/dpkg/origins/default";
 my $popcon_conf="/etc/popularity-contest.conf";
+my $os_release ="/etc/os-release";
+my $dpkg_db = "/var/lib/dpkg/info";
+my $rpm_system = 0;
+
+
+#Detecting RPM system
+if (open(CONFIG, "<", $popcon_conf))
+{
+  while (<CONFIG>)
+  {
+    $rpm_system = 1 if /^RPMSYSTEM="yes"$/;
+  }
+  close(CONFIG);
+}
 
 # $popcon_conf is in shell-script format
 my $HOSTID = qx(unset MY_HOSTID; . $popcon_conf; echo \$MY_HOSTID );
@@ -54,26 +66,26 @@ if ( $HOSTID !~ /^([a-f0-9]{32})$/)
 }
 
 # Architecture.
-my $debarch = `dpkg --print-architecture`;
-chomp $debarch;
+my $arch = $rpm_system ? `rpm --eval '\%{_arch}'` : `dpkg --print-architecture`;
+chomp $arch;
 
 # Popcon release
-my $popconver=`dpkg-query --showformat='\${version}' --show popularity-contest`;
+my $popconver = $rpm_system ? `rpm -q rpm --queryformat='\%{VERSION}'` :
+ `dpkg-query --showformat='\${version}' --show popularity-contest`;
 
 # Vendor
 my $vendor="unknown";
 
-if (open(VENDOR, "<", $dpkg_origin))
+if(open(VENDOR, "<", $os_release))
 {
   while (<VENDOR>)
   {
-    m/^Vendor: *(.*)/ and $vendor=$1;
+    m/^NAME=(["])(.*)\1/ and $vendor=$2;
   }
   close(VENDOR);
 }
 
 # Initialise time computations
-
 my $now = time;
 my $halfdaylen = 12 * 60 *60;
 my $daylen = 2 * $halfdaylen;
@@ -168,7 +180,7 @@ close PACKAGES;
 # add a header/footer.
 
 print "POPULARITY-CONTEST-0 TIME:",time," ID:$HOSTID ".
-    "ARCH:$debarch POPCONVER:$popconver VENDOR:$vendor\n";
+    "ARCH:$arch POPCONVER:$popconver VENDOR:$vendor\n";
 
 for (sort { $popcon{$b}[0] <=> $popcon{$a}[0] } keys %popcon)
 {
