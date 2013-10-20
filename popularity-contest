@@ -59,17 +59,17 @@ if ( $HOSTID !~ /^([a-f0-9]{32})$/)
 }
 
 # Architecture.
-my $arch = $RPM_SYSTEM ? `rpm --eval '\%{_arch}'` : `dpkg --print-architecture`;
+my $arch = $RPM_SYSTEM =~ /^yes$/ ? `rpm --eval '\%{_arch}'` : `dpkg --print-architecture`;
 chomp $arch;
 
 # Popcon release
-my $popconver = $RPM_SYSTEM ? `rpm -q rpm --queryformat='\%{VERSION}'` :
+my $popconver = $RPM_SYSTEM =~ /^yes$/ ? `rpm -q rpm --queryformat='\%{VERSION}'` :
  `dpkg-query --showformat='\${version}' --show popularity-contest`;
 
 # Vendor
 my $vendor="unknown";
 
-if (!$RPM_SYSTEM)
+if ($RPM_SYSTEM !~ /^yes$/)
 {
   if (open(VENDOR, "<", $dpkg_origin))
   {
