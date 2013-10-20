@@ -1,0 +1,47 @@
+.\" Hey, Emacs!  This is an -*- nroff -*- source file.
+.\" 
+.\" 
+.TH "POPULARITY-CONTEST" "8" "November 2001" "Debian/GNU Linux" ""
+.SH "NAME"
+popularity\-contest \- list the most popular Debian packages
+.SH "SYNOPSIS"
+.B popularity\-contest
+.SH "DESCRIPTION"
+The
+.B popularity\-contest
+command gathers information about Debian packages installed on the system,
+and prints the name of the most recently used executable program in that
+package as well as its last\-accessed time (atime) and last\-attribute\-changed
+time (ctime) to stdout.
+.PP 
+When aggregated with the output of
+.B popularity\-contest
+from many other systems, this information is valuable because it can be used
+to determine which Debian packages are commonly installed, used, or
+installed and never used.  This helps Debian maintainers make decisions such
+as  which packages should be installed by default on new systems.
+.PP 
+The resulting statistic is available from the project home page
+.BR http://popcon.debian.org/ .
+.PP 
+Normally,
+.B popularity\-contest
+is run from a
+.BR cron (8)
+job,
+.BR /etc/cron.daily/popularity\-contest ,
+which automatically submits the results to Debian package maintainers
+(only once a week) according to the settings in
+.BR /etc/popularity\-contest.conf
+and
+.BR /usr/share/popularity-contest/default.conf .
+.SH "SEE ALSO"
+The popularity\-contest FAQ at
+.BR /usr/share/doc/popularity\-contest/FAQ 
+.BR popcon\-largest\-unused (8),
+.BR cron (8)
+.LP
+Additional documentation is in
+.BR /usr/share/doc/popularity\-contest/ .
+.SH "AUTHOR"
+Avery Pennarun <apenwarr@debian.org>.

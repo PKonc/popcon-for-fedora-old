@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+# debian/rules file for the Debian popularity-contest package.
+# Derived in 1998 by Avery Pennarun from:
+#   Sample debian/rules that uses debhelper.
+#   GNU copyright 1997 by Joey Hess.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+build:
+	dh_testdir
+
+clean:
+	dh_testdir
+	dh_testroot
+	dh_clean
+
+install:
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+
+	# Add here commands to install the package into debian/tmp.
+	install -d debian/popularity-contest/usr/sbin/
+	install -d debian/popularity-contest/etc/
+	install -d debian/popularity-contest/usr/share/popularity-contest/
+	install popularity-contest debian/popularity-contest/usr/sbin/
+	install popcon-upload debian/popularity-contest/usr/share/popularity-contest/
+	install popcon-largest-unused debian/popularity-contest/usr/sbin/
+	install -m 644 default.conf debian/popularity-contest/usr/share/popularity-contest/
+	install -m 644 debian-popcon.gpg debian/popularity-contest/usr/share/popularity-contest/
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs README FAQ
+	dh_installcron
+	dh_installman debian/popularity-contest.8 debian/popcon-largest-unused.8
+	dh_installdebconf
+	dh_installchangelogs
+# Compress before the examples are installed for easy access to the
+# server scripts
+	dh_compress
+	dh_installexamples examples/bin examples/cgi-bin
+	dh_perl -d
+	dh_strip
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+# Build architecture-dependent files here.
+binary-arch: build install
+source diff:                                                                  
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

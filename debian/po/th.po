@@ -1,0 +1,92 @@
+# Thai translation of popularity-contest.
+# Copyright (C) 2006 Software in the Public Interest, Inc.
+# This file is distributed under the same license as the popularity-contest package.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2006.
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-07-29 20:25+0700\n"
+"Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
+"Language-Team: Thai <l10n@opentle.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "เข้าร่วมการสำรวจการใช้งานแพกเกจหรือไม่?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"ระบบของคุณอาจให้ข้อมูลสถิติแบบนิรนามกับนักพัฒนาดิสทริบิวชัน เกี่ยวกับแพกเกจที่คุณใช้มากที่สุดได้ "
+"ข้อมูลดังกล่าวจะมีผลต่อการตัดสินใจบางอย่าง เช่น "
+"การคัดเลือกแพกเกจที่จะเข้าไปอยู่ในซีดีแผ่นแรกของดิสทริบิวชัน เป็นต้น"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"ถ้าคุณเลือกที่จะเข้าร่วม สคริปต์ส่งข้อมูลอัตโนมัติจะทำงานสัปดาห์ละครั้ง "
+"โดยส่งข้อมูลสถิติไปยังนักพัฒนาดิสทริบิวชัน ซึ่งข้อมูลสถิติที่รวบรวมไว้ทั้งหมดสามารถดูได้ที่ http://"
+"popcon.debian.org/"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"การเลือกนี้ สามารถเปลี่ยนได้ในภายหลัง โดยเรียกคำสั่ง \"dpkg-reconfigure popularity-"
+"contest\""
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "สร้างชื่อเอกลักษณ์ของเครื่องไม่สำเร็จ"
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "สคริปต์ติดตั้งไม่สามารถสร้างชื่อเอกลักษณ์ของเครื่องได้ ปัญหานี้สำคัญ "
+#~ "เพราะทุกเครื่องที่ส่งข้อมูลต้องมีชื่อเอกลักษณ์อ้างอิง"
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "กรุณารายงานปัญหานี้ต่อแพกเกจ popularity-contest โดยแนบข้อมูลการตั้งค่าของคุณไปด้วย"
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "จะใช้ HTTP ในการส่งรายงานหรือไม่?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "ถ้าคุณไม่ต้องการใช้ HTTP ก็จะใช้อีเมลแทน"

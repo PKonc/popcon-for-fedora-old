@@ -1,0 +1,68 @@
+# translation of pa.po to Punjabi
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
+#    Developers do not need to manually edit POT or PO files.
+#
+# Amanpreet Singh Alam <amanpreetalam@yahoo.com>, 2005.
+# A S Alam <apbrar@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: pa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-11-06 09:44+0530\n"
+"Last-Translator: A S Alam <apbrar@gmail.com>\n"
+"Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "ਕੀ ਡੇਬੀਅਨ ਪੈਕੇਜ ਹਰਮਨ ਪਿਆਰਾ ਪ੍ਰਤੀਯੋਗਤਾ ਵਿੱਚ ਭਾਗ ਲੈਣਾ ਹੈ?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"ਤੁਸੀਂ ਆਪਣੇ ਸਿਸਟਮ ਉੱਤੇ ਆਪਣੇ ਵਲੋਂ ਆਮ ਵਰਤੇ ਡੇਬੀਅਨ ਪੈਕੇਜਾਂ ਬਾਰੇ ਜਾਣਕਾਰੀ ਨੂੰ ਡੇਬੀਅਨ ਖੋਜੀਆਂ ਨੂੰ ਭੇਜ ਸਕਦੇ "
+"ਹੋ।  ਇਹ ਜਾਣਕਾਰੀ ਨੂੰ ਡੇਬੀਅਨ ਦੀ ਪਹਿਲੀ CD ਉੱਤੇ ਰੱਖੇ ਜਾਣ ਵਾਲੇ ਪੈਕੇਜ ਦੀ ਚੋਣ ਕਰਨ ਸਮੇਂ ਵਰਤਿਆ "
+"ਜਾਵੇਗਾ।"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"ਜੇਕਰ ਤੁਸੀਂ ਭਾਗ ਲੈਣ ਦੀ ਚੋਣ ਕੀਤੀ ਤਾਂ ਹਰੇਕ ਹਫ਼ਤੇ ਇਹ ਸਵੈ-ਚਾਲਤ ਭੇਜਣ ਸਕਰਿਪਟ ਚੱਲੇਗੀ ਅਤੇ ਡੇਬੀਅਨ "
+"ਖੋਜੀਆਂ ਨੂੰ ਅੰਕੜੇ ਭੇਜੇਗੀ। ਇੱਕਠੇ ਕੀਤੇ ਅੰਕੜੇ ਤੁਸੀਂ http://popcon.debian.org/ ਉੱਤੇ ਵੇਖ ਸਕਦੇ ਹੋ।"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"ਤੁਸੀਂ ਇਹ ਫੈਸਲਾ ਕਰਨ ਉਪਰੰਤ ਕਦੇ ਵੀ ਆਪਣਾ ਮਨ ਬਦਲ ਸਕਦੇ ਹੋ \"dpkg-reconfigure popularity-"
+"contest\""
+

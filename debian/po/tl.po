@@ -1,0 +1,87 @@
+# translation of popularity-contest_debian_po.po to tagalog
+# Copyright (c) 2005 Debian Tagalog Translation Team
+# Rick Bahague Jr <rickjr@cp-union.org>, 2005.
+# Eric Pareja <xenos@upm.edu.ph>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest_debian_po_tl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-07-29 22:29+0800\n"
+"Last-Translator: Eric Pareja <xenos@upm.edu.ph> \n"
+"Language-Team: tagalog <debian-tl@banwa.upm.edu.ph>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Previous-Translator: Rick Bahague Jr <rickjr@cp-union.org>\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Makikilahok ba tayo sa pagsusuri ng paggamit ng mga pakete?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Maaring ipadala ng anonima ng inyong sistema sa mga debeloper ng inyong "
+"pamudmod ng mga estadistika tungkol sa mga pakete na madalas gamitin sa "
+"sistemang ito. Ang mga impormasyong nakakalap sa paraang ito ay "
+"nakakaimpluwensya sa pagdesisyon kung ano ang mga paketeng isinasama sa "
+"unang CD ng pamudmod."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Kung pipiliin niyong makilahok, ang awtomatikong script sa pagpasa ay "
+"tatakbo minsan sa isang linggo, at magpapadala ng estadistika sa mga "
+"debeloper ng pamudmod. Ang natipon na estadistika ay maaaring makita sa "
+"http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Maaaring baguhin ang pinili ninyo sa pagpapatakbo ng:  \"dpkg-reconfigure "
+"popularity-contest\""
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "Ang paggawang ng nag-iisang pagkakakilanlan sa host ay nabigo."
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "Ang install script ay hindi makagawa ng nag-iisang pagkakakilanlan sa "
+#~ "host. Ito ay mapaminsalang pagkakamali sapagkat ang bawat host na "
+#~ "nagpapasa ng impormasyon ay kailangang may nag-iisang pagkakakilanlan."
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Mangyaring idulog ang problema bilang bug laban sa pakete ng popularity-"
+#~ "contest at isama ang mga impormasyon tungkol sa inyong pagkaayos."
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "Gamitin ang HTTP upang magpadala ng mga ulat?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "Email ang gagamitin kung ayaw ninyong gumamit ng HTTP."

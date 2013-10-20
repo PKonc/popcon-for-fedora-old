@@ -1,0 +1,120 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity-contest 1.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-07-31 15:28+0200\n"
+"Last-Translator: Ruben Porras <nahoo@inicia.es>\n"
+"Language-Team: ES <debian-l10n-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "¿Desea participar en la encuesta sobre el uso de los paquetes?"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Puede hacer que su sistema envíe anónimamente estadísticas a los "
+"desarrolladores sobre los paquetes que más usa. Esta información tiene "
+"influencia sobre ciertas decisiones, como qué paquetes deben incluirse en el "
+"primer CD de la distribución."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Si elige participar, el script de envío se ejecutará automáticamente una vez "
+"a la semana, mandando estadísticas a los desarrolladores. Las estadísticas "
+"se pueden consultar en http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"La elección siempre puede cambiar con la orden «dpkg-reconfigure popularity-"
+"contest»"
+
+#~ msgid "Generating unique host identifier failed"
+#~ msgstr "Falló la generación del identificador de sistema"
+
+#~ msgid ""
+#~ "The install script could not generate a unique host identifier. This is a "
+#~ "fatal error, as all hosts submitting information need to have an unique "
+#~ "identifier."
+#~ msgstr ""
+#~ "El script de instalación no pudo generar un identificador de puesto "
+#~ "único. Esto es un error fatal, ya que todos los sistemas que envíen "
+#~ "información necesitan un identificador único."
+
+#~ msgid ""
+#~ "Please report this problem as a bug against the popularity-contest "
+#~ "package, and include information about your configuration."
+#~ msgstr ""
+#~ "Por favor, avise del problema enviando un informe de fallo al paquete "
+#~ "«popularity-contest», incluyendo información acerca de su configuración."
+
+#~ msgid "Use HTTP to submit reports?"
+#~ msgstr "¿Usar HTTP para enviar los informes?"
+
+#~ msgid "If you do not want to use HTTP, email is used instead."
+#~ msgstr "Si no quiere usar HTTP, se usará el correo electrónico en su lugar."
+
+#~ msgid ""
+#~ "This information helps us make decisions such as which packages should go "
+#~ "on the first Debian CD.  Also, we can improve future versions of Debian "
+#~ "so that the most popular packages are the ones which are installed "
+#~ "automatically for new users."
+#~ msgstr ""
+#~ "Esta información nos ayuda a tomar decisiones, como qué paquetes deben ir "
+#~ "en el primer CD de Debian. También servirá para mejorar versiones futuras "
+#~ "de Debian, haciendo que los paquetes más populares sean los que se "
+#~ "instalen automáticamente para los nuevos usuarios."
+
+#~ msgid ""
+#~ "(NOTE: e-mail servers add their own tracing information and your data "
+#~ "won't be completely anonymous while in transit.)"
+#~ msgstr ""
+#~ "(NOTA: los servidores de correo electrónico añaden cierta información de "
+#~ "rastreo, por lo que los datos no serán completamente anónimos mientras "
+#~ "estén en tránsito.)"
+
+#~ msgid ""
+#~ "If you choose to participate, the automatic submission script will run "
+#~ "once every week automatically."
+#~ msgstr ""
+#~ "Si elige participar, popularity-contest se ejecutará automáticamente una "
+#~ "vez a la semana."
+
+#~ msgid "Do you want to participate?"
+#~ msgstr "¿Quiere participar?"

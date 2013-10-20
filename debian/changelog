@@ -1,0 +1,1223 @@
+popularity-contest (1.60) unstable; urgency=low
+
+  * Encrypt reports by default:
+    + default.conf, FAQ:
+      - Set ENCRYPT=maybe by default and document it.
+    As a consequence, reports are now compressed by default. Closes: #149425
+
+ -- Bill Allombert <ballombe@debian.org>  Thu, 05 Sep 2013 09:29:57 +0200
+
+popularity-contest (1.59) unstable; urgency=low
+
+  * debian/cron.daily:
+    - Provide a temporary homedir to gpg so it does not create /root/.gnupg.
+      Also use 'set -e'. Closes: #714917 Thanks Ansgar Burchardt.
+    - Add setting ENCRYPT=maybe, which encrypt if gpg is available.
+      Make ENCRYPT=yes to fail if gpg is not available. Closes: #714918
+
+ -- Bill Allombert <ballombe@debian.org>  Thu, 01 Aug 2013 16:26:31 +0200
+
+popularity-contest (1.58) unstable; urgency=low
+
+  * Move examples script to examples subdirectory.
+    - Add gensections.pl
+    - Do not install clean-filter/clean-genpkglist
+    - Rename popcon-submit.cgi to popcon.cgi
+  * popcon now report the dpkg Vendor field. Suggested by Paul Wise.
+  * popanal.py:
+    - Record the VENDOR field.
+    - Bump stable version to 1.56.
+  * Add support for encrypted report: Closes: #480860
+    + debian-popcon.gpg:
+      - Added: public encryption key
+    + debian/cron.daily:
+      - Encrypt submission with gnupg if available
+    + debian/control:
+      - Recommends: gnupg so that encryption is enabled
+    + default.conf:
+      - Add setting ENCRYPT, KEYRING and POPCONKEY.
+        ENCRYPT default to 'no' for this release but will default to 'yes' in
+        subsequent release.
+    + examples/cgi-bin/popcon.cgi:
+      - Accept encrypted report.
+    + examples/bin/prepop.pl, examples/bin/popcon-process.sh
+      - Add support for decrypting encrypted report
+  * popularity-contest: 
+    - truncate reported atime and ctime to multiple of 12 hours to reduce
+      information leak. Closes: #707951 Thanks Bernhard R. Link
+  * debian/control:
+    - Updated Standards-Version from 3.9.3 to 3.9.4.  No change needed.
+
+ -- Bill Allombert <ballombe@debian.org>  Wed, 19 Jun 2013 13:45:02 +0200
+
+popularity-contest (1.57) unstable; urgency=low
+
+  * Please note when reading stats that wheezy was released with 1.56.
+  * debian/control:
+    - Fix grammar in Description. Closes: #699538 Thanks Chris Bannister.
+  * popcon.pl:
+    - add popcon version of wheezy
+  [ Christian Perrier ]
+  [ Debconf translations ] 
+  * Kannada (Mallikarjuna).  Closes: #694411
+
+ -- Bill Allombert <ballombe@debian.org>  Sun, 05 May 2013 21:21:15 +0200
+
+popularity-contest (1.56) unstable; urgency=low
+
+  [ Christian Perrier ]
+  [ Debconf translations ] 
+  * Latvian (Rūdolfs Mazurs).  Closes: #674661
+  * Lithuanian (Rimas Kudelis).  Closes: #675629
+  * Galician (Jorge Barreiro).  Closes: #676988
+  * Welsh (Daffyd Tomos).
+  * Uyghur (Sahran).  Closes: #627009
+
+ -- Bill Allombert <ballombe@debian.org>  Tue, 25 Sep 2012 21:13:44 +0200
+
+popularity-contest (1.55) unstable; urgency=low
+
+  * popularity-contest: fix multi-arch support:
+    - Temporarily revert change from 1.53:
+      'Find package files lists by running dpkg -L by batches.'
+      (dpkg -L does not provide a stable interface across upgrade).
+    - Instead add '$package:*.list' to the list of filelists. Closes: #660712
+    - Reject files in subdirectories of */lib/<triplet> since they are read
+      by ldconfig now.
+  * FAQ: remove documentation relevant to pre-etch systems.
+
+ -- Bill Allombert <ballombe@debian.org>  Tue, 22 May 2012 22:10:42 +0200
+
+popularity-contest (1.54) unstable; urgency=low
+
+  [ Bill Allombert ]
+  * README: mention move to subversion.
+  * popanal.py: sync with popcon.debian.org version: 
+    - sort packages by name in all-popcon-results to prevent data leak.
+      Closes: #634474 Thanks Timo Juhani Lindfors for finding this issue.
+    - add support for generating stats for stable reports.
+  * popcon.pl, popcon-stat.pl, popcon-process.pl: sync:
+    - Add support for generating the stable reports part of the website.
+  * clean-filter: fix typo in error message. Patch from Bryce Nesbitt.
+  * popcon-stat.pl: Fix y-scale. Closes: #651902 Thanks Ben Hutchings.
+  * popanal.py, popcon-process.sh, popcon.pl:
+    - /org->/srv transition for new popcon.debian.org host.
+  * debian/control:
+    - Updated Standards-Version from 3.9.2 to 3.9.3.  No change needed.
+  * popcon-largest-unused:
+    - Do not fail when there are no OLD packages. 
+      Closes: #666771 Thanks Jeffrey Sheinberg
+
+  [ Debconf translations ]
+  * Sinhala; (Danishka Navin).  Closes: #640757
+  * Icelandic (Sveinn í Felli). 
+  * Kannada (Vikram Vincent).  Closes: #659342
+
+ -- Bill Allombert <ballombe@debian.org>  Wed, 09 May 2012 00:03:32 +0200
+
+popularity-contest (1.53) unstable; urgency=low
+
+  * popularity-contest: 
+    - Find package files lists by running dpkg -L by batches.  Closes: #622322
+      This fix an issues with multiarch packages. (sorry for the delay) 
+  * debian/control:
+    - Updated Standards-Version from 3.9.1 to 3.9.2.  No change needed.
+
+ -- Bill Allombert <ballombe@debian.org>  Thu, 30 Jun 2011 21:16:58 +0200
+
+popularity-contest (1.52) unstable; urgency=low
+
+  * Please note when reading stats that squeeze was released with 1.49.
+  * Allow cron.daily to run if last run was more than 7 day ago. 
+    Patch from Vagrant Cascadian.  Closes: #610876 
+  * FAQ: document how to disable sending report by email.  Closes: #502159
+    Thanks, Ryo Furue.
+  * prepop.pl popcon-stat.pl popcon-process.sh popcon.pl:
+    - sync with popcon.debian.org version: rename all-popcon-results.txt.gz to
+      all-popcon-results.gz to avoid issues with content negotiation.
+  * popularity-contest:
+    - Check whether open(pkg.list) succeed.
+  * debian/cron.daily, FAQ:
+    - Add variable MTAOPS to pass extra options to sendmail.  Closes: #403916.
+      Thanks Michelle Konzack
+  * examples/popcon-stat.pl was not executable.
+
+ -- Bill Allombert <ballombe@debian.org>  Sun, 03 Apr 2011 17:27:18 +0200
+
+popularity-contest (1.51) unstable; urgency=low
+
+  [ Christian Perrier ]
+  * Really fix Pre-Depends "debconf (>= 1.5.34) | cdebconf (>= 0.106)"
+    to properly handle Serbian (Latin) debconf translations.
+    Closes: #610840
+
+ -- Bill Allombert <ballombe@debian.org>  Mon, 24 Jan 2011 16:10:12 +0100
+
+popularity-contest (1.50) unstable; urgency=low
+
+  [ Christian Perrier ]
+  * Pre-Depend on debconf (>= 1.5.34) to properly handle Serbian (Latin)
+    debconf translation
+  * Translations:
+    - Serbian (Janos Guljas).  Closes: #600123
+    - Serbian in Latin script (Janos Guljas).  Closes: #600124
+
+ -- Bill Allombert <ballombe@debian.org>  Thu, 23 Dec 2010 12:24:36 +0100
+
+popularity-contest (1.49) unstable; urgency=low
+
+  [ Bill Allombert ]
+  * popcon.pl:
+    - sync with popcon.debian.org version: add source (max) ratings.
+  * debian/control: 
+    - Build-Depends: raise debhelper version to (>=5) to match compat.
+    - Updated Standards-Version from 3.8.1 to 3.9.1.  No change needed.
+
+  [ Christian Perrier ]
+  * Translations:
+    - Telugu. Closes: #544044
+    - Italian (Milo Casagrande).  Closes: #559503
+    - Simplified Chinese (苏运强).
+    - Slovenian (Vanja Cvelbar).  Closes: #570103
+    - Persian added (Vahid Ghaderi).  Closes: #587010,#587078
+    - Kazakh (Sarsenov D.).  Closes: #587100
+    - Bosnian (Safir Secerovic).
+
+ -- Bill Allombert <ballombe@debian.org>  Sat, 09 Oct 2010 19:13:27 +0200
+
+popularity-contest (1.48) unstable; urgency=low
+
+  [ Bill Allombert ]
+  * popcon.pl:
+    - sync with popcon.debian.org version: add release names.
+  * popularity-contest: 
+    - use "dpkg --print-architecture" instead of 
+          "dpkg --print-installation-architecture". Closes: #529393
+  * debian/control: 
+    - Updated Standards-Version from 3.8.0 to 3.8.1.  No change needed.
+  * debian/compat:
+    - Set debhelper compatibility level to 5
+
+  [ Christian Perrier ]
+  * Translations:
+    - Slovak updated. Closes: #517101
+
+ -- Bill Allombert <ballombe@debian.org>  Sun, 14 Jun 2009 18:10:30 +0200
+
+popularity-contest (1.47) unstable; urgency=low
+
+  * Please note when reading stats that lenny was released with 1.46.
+  [ Christian Perrier ]
+  * Translations:
+    - Macedonian
+    - Asturian added. Closes: #511141
+    - Kazakh added. Closes: #514590
+
+  [ Bill Allombert ]
+  * debian/popularity-contest.8, FAQ:
+    - Updated to reflect move to /etc/cron.daily. Closes: #500431
+      Thanks William Dode.
+  * FAQ: Fix typo reported by Raphael Geissert. Closes: #496605
+  * debian/preinst, debian/postrm:
+    - Add 'set -e'.
+
+ -- Bill Allombert <ballombe@debian.org>  Fri, 20 Feb 2009 11:33:21 +0100
+
+popularity-contest (1.46) unstable; urgency=low
+
+  [ Petter Reinholdtsen ]
+  * Make sure to reinsert the ID if it is missing in the configuration
+    file.  Based on bug reported by Alf-Tonny Batz.
+
+  [ Christian Perrier ]
+  * Translations:
+    - Irish. Closes: #480871
+    - Belarusian. Closes: #483527
+    - Korean. Closes: #491413
+    - Georgian. Closes: #498418
+
+  [ Bill Allombert ]
+  * popcon-stat.pl:
+    - sync with popcon.debian.org version: add graphs restricted to last 3
+      months.
+  * Updated standards-version from 3.7.3 to 3.8.0.  No change needed.
+
+ -- Bill Allombert <ballombe@debian.org>  Mon, 22 Sep 2008 21:01:29 +0200
+
+popularity-contest (1.45) unstable; urgency=low
+
+  [ Petter Reinholdtsen ]
+  * Fix typo in debug message emitted from prepop.pl.
+
+  [ Bill Allombert ]
+  * popcon.pl:
+    - revert changes introduced in 1.44.
+    - Use :encoding(UTF-8) instead of :utf8 when reading packages files
+    - Add query box linking to <http://qa.debian.org/popcon.php>
+  * debian/control:
+    - No more Recommends mime-construct. Closes: #466352.
+    - Recommends cron | fcron. Closes: #479664.
+  * Instead of reporting on Sunday, now a random day in the week is
+    chosen. This spread the load on the server. Closes: #440493, #459910.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 11 May 2008 12:20:19 +0200
+
+popularity-contest (1.44) unstable; urgency=low
+
+  [ Petter Reinholdtsen ]
+  * Make sure popanal do not crash when an invalid timestamp is found
+    in the POPULARITY-CONTEST-0 header.
+  * Remove code in cron.weekly to sleep a random period of time up to
+    an hour, to test hypothesis that this was not the reason for the
+    increase in submissions seen the last few months.  Possibly
+    reopens #440493, #459910.
+  * Change popcon.pl to handle the fact that
+    /org/ftp.root/debian/dists/stable/main/binary-*/Packages.gz is not
+    UTF-8.  Otherwise it would croak on a name containing 'ó'.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue, 18 Mar 2008 20:17:48 +0100
+
+popularity-contest (1.43) unstable; urgency=low
+
+  [ Christian Perrier ]
+  * Translations:
+    - Kannada added. Closes: #422031
+    - Hebrew updated. Closes: #445532
+
+  [ Bill Allombert ]
+  * Remove popcon-upload-ubuntu and popcon-submit-ubuntu.cgi, dropped
+    by Ubuntu.
+  * popularity-contest used files regexp:
+    - add support for php scripts
+    - Add missing $ after .pm. Closes: #431535, Thanks Gerfried Fuchs.
+  * cron.weekly, function run_popcon():
+    - remove spurious 'sh -c'
+    - add -s /bin/sh in case nobody has no shell. Closes: #429405, #431867.
+  * cron.weekly, default.conf, FAQ:
+    - Add support for HTTP_PROXY. Closes: #365681.
+  * Apply patch from Johan Walles to treat all mapped files as recently used
+    (which they obviously are).  Closes: #457441, #327693.
+
+  [ Petter Reinholdtsen ]
+  * Add code in cron.weekly to sleep a random period of time up to an
+    hour, to make sure all clients do not connect at the same time.
+    Closes: #440493, #459910.
+  * Updated standards-version from 3.7.2 to 3.7.3.  No change needed.
+  * Include files in subdirectories under */lib/, to avoid files
+    updated by ldconfig while still counting such packages as used
+    (Closes: #457432)
+  * Move homepage URL to the new Homepage control file tag.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 13 Jan 2008 14:32:32 +0100
+
+popularity-contest (1.42) unstable; urgency=low
+
+  [ Christian Perrier ]
+  * Translations:
+    - Catalan minor update. Closes: #416945
+    - Marathi added. Closes: #416793
+
+  [ Bill Allombert ]
+  * Please note when reading stats that etch was released with 1.41.
+
+ -- Bill Allombert <ballombe@debian.org>  Mon,  9 Apr 2007 20:50:55 +0200
+
+popularity-contest (1.41) unstable; urgency=low
+
+  * debian/control: Remove first person use from the package description
+    Closes: #414340. Thanks Filipus Klutiero.
+  * debian/cron.weekly: call su without -p to keep $HOME sane.
+    Closes: #414644. Thanks Robert Luberda
+
+ -- Bill Allombert <ballombe@debian.org>  Sat, 17 Mar 2007 19:03:31 +0100
+
+popularity-contest (1.40) unstable; urgency=medium
+
+  * Medium urgency for i18n only upload.
+  [ Christian Perrier ]
+  * Translations
+    - Updated Basque by Piarres Beobide. Closes: #400911
+    - Added Malayalam by Praveen. Closes: #401437
+    - Added Tamil by Senthil Kumar
+    - Updated Norwegian Nynorsk by Håvard Korsvoll. Closes: #402789
+    - Updated Esperanto by Serge Leblanc. Closes: #409430
+    - Updated Slovenian by Matej Kovacic
+    - Updated Turkish by Recai Oktas. Closes: #406996
+  [ Petter Reinholdtsen ]
+  * Minor cleanup to the changelog formatting.
+
+ -- Bill Allombert <ballombe@debian.org>  Sun, 11 Feb 2007 15:35:03 +0100
+
+popularity-contest (1.39) unstable; urgency=low
+
+  * Translations
+    - Updated Bosnian by Safir Secerovic. Closes: #396367
+    - Updated Bulgarian by Damyan Ivanov. Closes: #396530
+    - Updated Polish by Bartosz Fenski. Closes: #396714
+    - Updated Punjabi by Amanpreet Singh Alam.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Thu, 16 Nov 2006 08:41:35 +0100
+
+popularity-contest (1.38) unstable; urgency=medium
+
+  * Fix typo in postinst preseeding code (SUBMITRULS -> SUBMITURLS).
+  * Medium urgency to get this fix quickly into etch.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 29 Oct 2006 09:54:57 +0100
+
+popularity-contest (1.37) unstable; urgency=low
+
+  * Translations
+    - Added Gujarati by Kartik Mistry. Closes: #393444
+    - Added Hindi by Ravishankar Shrivastava
+    - Updated Gujarati by Arief S Fitrianto.
+    - Updated Catalan by Jordi Mallach.
+    - Updated Albanian by Elian Myftiu. Closes: #394699
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 28 Oct 2006 12:31:42 +0200
+
+popularity-contest (1.36) unstable; urgency=medium
+
+  * medium urgency: #386879 fix a missing dependency.
+  * popularity-contest:
+   + Remove support for woody.
+   + Report atimes of System.map files in /boot. (Closes: #229237)
+  * debian/cron.weekly:
+   + Remove support for sending compressed email since there is no support
+     for that feature on the server side, and debian/cron.weekly being a
+     conffile should be kept simple.
+  * debian/control:
+   + Do not Depends on '| dpkg-awk' for woody support.
+   + Remove spurious Build-Depends line.
+   + Fix the long description.
+  * Translations
+    - Added Wolof by Mouhamadou Mamoune Mbacke. (Closes: #392151)
+    - Updated Traditional Chinese by Tetralet.
+
+ -- Bill Allombert <ballombe@debian.org>  Tue, 10 Oct 2006 18:10:27 +0200
+
+popularity-contest (1.35) unstable; urgency=low
+
+  [Petter Reinholdtsen]
+  * Rewrite argument parsing code in popcon-upload to avoid the
+    perl-modules dependency and to keep the disk footprint for popcon
+    small. (Closes: #386879)
+
+  * Translations
+    - Added Bengali by Mahay Alam Khan.
+    - Updated Hebrew by Lior Kaplan. Closes: #387635
+    - Updated Brazilian Portuguese by Andre Luis Lopes. Closes: #389098
+    - Updated Croatian by Josip Rodin. Closes: #389708
+    - Updated Danish by Claus Hindsgaul. Closes: #390611
+    - Updated Ukrainian by Eugeniy Meshcheryakov. Closes: #390738
+    - Updated Hungarian by SZERVÁC Attila. Closes: #390746
+    - Added Estonian by Siim Põder. Closes: #390973
+    - Updated Macedonian by Georgi Stanojevski. Closes: #390804
+    - Updated Norwegian Bokmål from Petter Reinholdtsen.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat,  7 Oct 2006 00:19:23 +0200
+
+popularity-contest (1.34) unstable; urgency=low
+
+  [ Bill Allombert ]
+  * popcon.pl: add support for favicon.
+
+  [Petter Reinholdtsen]
+  * Changed popcon-submit.cgi to only report success when it is able to extract
+    the submitter ID from the report.
+  * Changed prepop.pl to only fail if mkdir fails when the directory is
+    missing in the first place.
+  * Make sure HTTP headers use \r\n instead of \n as line ending, to
+    avoid confusing transparent Cisco proxies.  Patch from
+    Richard Burton.  (Closes: #379732)
+  * Check files in ^/boot/ as well, to detect if a kernel package was
+    used. (Closes: #229237)
+  * Clarify participation question, to make it easier to understand
+    for those that do not know what the popularity contest
+    is.  Based on patch from Thijs Kinkhorst.  (Closes: #361840)
+  * Change the default HTTP submission setting, from no to yes.  It is
+    well tested and work fine.
+  * Remove question about submission method (http/smtp).  The HTTP
+    method is and should be the primary submit method for new
+    installations, and existing installations will continue to only
+    use SMTP.  This removes the unclear question. (Closes: #317527)
+  * Remove unused template popularity-contest/hostid-failed.
+  * Change package description and question text to make it less
+    debian specific and avoid indication that only Debian packages are
+    reported (also non-Debian packages are reported).  Based on patch
+    from Ubuntu and input from Christian Perrier.
+  * Adjust the popularity-contest(8) manual page to only say 'submit',
+    instead of 'email', to avoid confusing users. (Closes: #341144)
+  * Update standards-version from 3.6.2 to 3.7.2.  No changes needed.
+  * Add Build-Depends with the same dependencies as
+    Build-Depends-Indep, to keep lintian happy.
+  * Add hidden debconf question popularity-contest/submiturls to
+    support preseeding the submission URL. (Closes: #384144)
+  * Remove double quotes around $MAILTO to allow users to request a
+    copy of the email-submitted reports.  (Closes: #326593)
+  * Translations
+    - Updated Italian (it) by Davide Viti.
+    - Updated Tagalog (tl) by Eric Pareja.
+    - Updated Esperanto (eo) by Serge Leblanc.
+    - Updated German (de) by Jens Seidel.
+    - Updated Greek (el) by Emmanuel Galatoulas.
+    - Updated Norwegian Bokmål from Petter Reinholdtsen.
+
+  [ Christian Perrier ]
+    - Updated Khmer by Khoem Sokhem. (Closes: #359672)
+    - Updated Norwegian Nynorsk by Håvard Korsvoll. (Closes: #367248)
+    - Added Nepali by Paras Pradhan. (Closes: #369529)
+    - Added Dzongkha by Pema geyleg. (Closes: #368591)
+    - Added Thai by Theppitak Karoonboonyanan. (Closes: #367338)
+    - Updated Italian (typos) by Davide Viti. (Closes: #370010)
+    - Updated Hungarian by SZERVAC Attila. (Closes: #378371)
+    - Updated Basque by Piarres Beobide. (Closes: #381845)
+    - Updated Slovenian by Jure Cuhalev. (Closes: #381862)
+    - Updated Dutch by Thijs Kinkhorst. (Closes: #381931)
+    - Updated Galician by Jacobo Tarrio. (Closes: #380594)
+
+  [ Mohammed Adnène Trojette ]
+  * Translations:
+    - Updated Arabic by Ossama Khayat.
+    - Updated Czech by Miroslav Kure. (Closes: #380436)
+    - Updated Dzongkha by Dorji Tashi. (Closes: #368591)
+    - Updated Finnish by Tapio Lehtonen. (Closes: #380445)
+    - Updated French by Florentin Duneau.
+    - Updated Japanese by Kenshi Muto. (Closes: #380475)
+    - Updated Khmer by Khoem Sokhem. (Closes: #359672)
+    - Updated Korean by Sunjae Park. (Closes: #380362)
+    - Updated Lithuanian by Gintautas Miliauskas. (Closes: #380398)
+    - Updated Nepali by Shyam Krishna Bal. (Closes: #369529)
+    - Updated Portuguese by Miguel Figueiredo. (Closes: #384885)
+    - Updated Romanian by Eddy Petrişor. (Closes: #380489)
+    - Updated Russian by Yuri Kozlov. (Closes: #380429)
+    - Updated Simplified Chinese by Carlos Z.F. Liu. (Closes: #381002)
+    - Updated Slovak by Peter Mann. (Closes: #380431)
+    - Updated Spanish by Rubén Porras. (Closes: #380655)
+    - Updated Swedish by Daniel Nylander. (Closes: #381049)
+    - Updated Thai by Theppitak Karoonboonyanan. (Closes: #380358)
+    - Updated Turkish by Recai Oktaþ. (Closes: #380334)
+    - Updated Vietnamese by Clytie Siddall. (Closes: #380359)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon,  4 Sep 2006 19:09:06 +0200
+
+popularity-contest (1.33) unstable; urgency=low
+
+  [Mohammed Adnène Trojette]
+  * Translations:
+    - Updated Brazilian by André Luís Lopes. (Closes: #348107)
+    - Updated Esperanto by Serge Leblanc. (Closes: #351085)
+    - Updated Slovenian by Jure Cuhalev. (Closes: #351101)
+    - Updated Hungarian by Hajnalka Hegedus. (Closes: #353024)
+    - Updated Korean by Sunjae Park. (Closes: #339013)
+    - Updated Khmer by Khoem Sokhem. (Closes: #359672)
+
+  [Christian Perrier]
+    - Added Macedonian by Georgi Stanojevski
+    - Rename the Punjabi translation file name from pa_IN to pa
+      to fit a decision taken in -i18n
+
+  [Bill Allombert]
+   * FAQ: 
+     - Apply spelling fix by Thijs Kinkhorst, thanks! (Closes: #348329)
+     - Remove paragraph about 'valid sender domain' since popcon.debian.org
+       mail-server no more requires it.
+     - Add question about converting timestamp to date (Closes: #322261)
+       Thanks Nathan Stratton Treadway.
+     - Add question "What is considered a 'vote' for a package ?".
+       (Closes: #321365). Thanks Nathan Stratton Treadway.
+   * popcon.pl: switch I/O to UTF-8. As a side effect this fix the indenting
+     (Closes: #333597). Thanks Gürkan Sengün.
+   * popcon-upload: parse server output for success as it is received instead
+     of waiting for the socket to close which might happen after the timeout,
+     thuse reporting spurious failure. (Closes: #350934). Thanks Javier Kohen.
+
+ -- Bill Allombert <ballombe@debian.org>  Fri,  7 Apr 2006 15:37:00 +0200
+
+popularity-contest (1.32) unstable; urgency=low
+
+  [Petter Reinholdtsen]
+  * Add variable mirrorbase to popanal.py, to make it easier to set up
+    a new server.
+  * Remove listing email as the transport method in the package
+    description, and make the description independent of the method
+    used.  This reflect the new HTTP transport support. (Closes: #321056)
+  * Update the FAQ to better reflect the support for HTTP submissions.
+  * popcon-upload-ubuntu: Replace ubuntulinux.org with ubuntu.com.  Patch
+    from Colin Watson and Ubuntu.
+  * Correct use of 'su' in cron-script.  (Closes: #331438)
+  * Make it possible to get popcon to only report using HTTP.  Patch
+    from Vagrant Cascadian. (Closes: #325030)
+  * Added debian/compat to set debhelper compatibility level to 4, and
+    remove debian/conffiles as it is no longer needed.
+  * Let popcon-submit.cgi pipe incoming reports through prepop.pl
+    instead of saving it directly to disk, to make sure the same
+    sanity checks are done for both HTTP and SMTP reports.  Thanks to
+    Bill Allombert for pointing out the risks of the old approach.
+
+  [Bill Allombert]
+  * Fix server-side scripts to use the Packages.gz files instead of the
+    Packages file.
+
+  [Mohammed Adnène Trojette]
+  * Translations:
+    - Updated Romanian by Eddy Petrisor. (Closes: #323225)
+    - Updated Swedish from Daniel Nylander. (Closes: #332710)
+    - Updated Tagalog from Eric Pareja. (Closes: #338614)
+    - Updated Danish from Morten Brix Pedersen. (Closes: #340129)
+    - Updated Korean from Sunjae Park. (Closes: #343688)
+    - Updated Greek from George Papamichelakis. (Closes: #344584)
+    - Updated Catalan from Aleix Badia i Bosch. (Closes: #345228)
+    - Updated Turkish from Recai Oktas. (Closes: #347713)
+
+  [Christian Perrier]
+  * Translations:
+    - Added Punjabi translation by Amanpreet Singh Alam
+    - Updated Dutch translation by bart Cornelis
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 14 Jan 2006 09:56:05 +0100
+
+popularity-contest (1.31) unstable; urgency=low
+
+  [Petter Reinholdtsen]
+  * Add scripts to clean out non-debian packages from the entries, to
+    make it possible to publish anonymous raw data.  Based on code
+    from Alain Schroeder.
+  * Rewrote popcon-upload to submit reports using MIME-encoded file
+    uploads to match the common practice for browser-based file
+    uploads. (Closes: #319019)
+  * Change popcon-submit.cgi to handle uploads in both the old upload
+    format and the new upload format, as well as the ubuntu
+    (uncompressed) format.
+  * Add support in popcon-submit.cgi to save directly to disk instead
+    of sending emails.
+  * Change popcon-submit-ubuntu.cgi to make it easier to run with
+    older python versions, and make sure the reply matches the
+    "success" string used by popcon-upload.
+  * Change popcon.pl to read section info from the stable branch as
+    well, and make sure it keep working even if one of the sections
+    are empty.
+  * Use more variables in popcon-process.sh to make it easier to
+    deploy on other servers.
+  * Change code for detecting old dpkg version and using dpkg-awk
+    instead to avoid error message when dpkg-query is missing. Modify
+    dependency to depend on 'dpkg (>= 1.10) | dpkg-awk'.  This should
+    make sure it work on woody as well.
+  * Make sure the server scripts are installed uncompressed, for easy
+    access when setting up a server.
+  * Translations
+    - Updated Japanese from Kenshi Muto. (Closes: #317402)
+    - Updated Russian from Yuri Kozlov. (Closes: #317449)
+    - Updated Vietnamese from Phan Vinh Thinh. (Closes: #317630)
+    - Updated German by Dennis Stampfer.
+    - Updated Albanian by Elian Myftiu. (Closes: #319079)
+    - Updated Arabic by Ossama M. Khayat.
+    - Updated Polish by Bartosz Fenski. (Closes: #320132)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 29 Jul 2005 01:54:43 +0200
+
+popularity-contest (1.30) unstable; urgency=low
+
+  * Add support for reporting using http POST to a list of URLs.
+    Uploading using content-type text/plain, content-encoding
+    x-gzip, with 30 second timeout. (Closes: #239097)
+  * HTTP submissions are enabled by default for new installs, but
+    disabled by default for upgrades.
+  * New client script /usr/share/popularity-contest/popcon-upload.
+  * New server CGI /usr/share/doc/popularity-contest/popcon.cgi.
+  * Added simple FAQ entry about the http POST feature.
+  * Code done by Bill Allombert.  Patch based on code from Ubuntu,
+    though reimplemented in perl to avoid python dependency.  The
+    ubuntu versions are included in the source package as
+    popcon-submit-ubuntu.cgi and popcon-upload-ubuntu.
+  * Added low priority debconf question asking if http should be used.
+    Only ask this question if participating.
+  * Rewrote the participation template text, to only talk about
+    submissions and not emails, making it neutral to the submission
+    method used.
+  * debian/cron.weekly:
+    - Try to run /usr/share/popularity-contest/popcon-upload if
+      USEHTTP is enabled
+    - Do not send email if http POST method was successfull.
+    - Do not run sendmail if it is not available, to work without
+      mail-transport-agent.  Redused depend on mail-transport-agent to
+      recommends, as the default for new installs is HTTP, and
+      existing installations are expected to already have
+      mail-transport-agent installed.
+  * Depend on ${misc:Depends} instead of debconf, to get the updated
+    debconf dependency.
+  * Rewrote popularity-contest to use dpkg-awk if dpkg-query is
+    missing.  This make it compatible with dpkg versions before 1.10,
+    getting it to work on woody, sarge, etch and sid.  Drop versioned
+    dependency on dpkg because of this.
+  * Implemented sending of compressed MIME emails when recommended
+    package mime-construct is installed.  Disabled until the server
+    side is implemented. (Debian bug #149425)
+  * Add info in README about the linux counter. (Closes: #259004)
+  * Updated to Standards-Version 3.6.2.  No changes required.
+  * Translations (Done by Christian Perrier)
+    - Updated Italian from Cristian Rigamonti
+    - Updated French from Christian Perrier
+    - Updated Norwegian Bokmål from Petter Reinholdtsen
+    - Updated Basque from Iñaki Larranaga Murgoitio
+    - Updated Galician from Jacobo Tarrío. (Closes: #317135)
+    - Updated Simplified Chinese from Carlos Z.F. Liu. (Closes: #317136)
+    - Updated Lithuanian from Gintautas Miliauskas. (Closes: #317139)
+    - Updated Czech from Miroslav Kure. (Closes: #317141)
+    - Updated Ukrainian from Eugeniy Meshcheryakov. (Closes: #317151)
+    - Updated Hebrew from Lior Kaplan. (Closes: #317153)
+    - Updated Slovak from Peter Mann. (Closes: #317154)
+    - Updated Portuguese from Miguel Figueiredo. (Closes: #317172)
+    - Updated Finnish from Tapio Lehtonen. (Closes: #317276)
+    - Updated Spanish from Ruben Porras. (Closes: #317281)
+    - Updated Indonesian from Parlin Imanuel. (Closes: #317326)
+    - Updated Bulgarian from Ognyan Kulev. (Closes: #317328)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Thu,  7 Jul 2005 20:12:53 +0200
+
+popularity-contest (1.29) unstable; urgency=low
+
+  * Please note when reading stats that sarge was released with 1.28.
+  * debian/rules: Ship popcon-stat.pl as example script.
+  * popcon.pl: Generate more standard-compliant HTML.
+  * popularity-contest: Remove extraneous space at end of lines.
+    Closes: #295763. Thanks Erik Schanze.
+  * popanal.py: Update warning to match code.
+  * README.examples: update to reflect current arrangement
+  * Translations (Done by Christian Perrier)
+    - Portuguese translation updated by Miguel Figueiredo.
+
+ -- Bill Allombert <ballombe@debian.org>  Tue,  7 Jun 2005 16:58:30 +0200
+
+popularity-contest (1.28) unstable; urgency=low
+
+  * Update example server-side scripts to popcon.d.o version:
+    - popcon.pl: Fix typos in index.html header text.
+               + Output timings to stdout. 
+    - popanal.py: Catch broken date field in reports.
+    - popcon-process.sh: redirect popcon.pl output to popcon.log
+  * Translations (Done by Christian Perrier)
+    - Added Galician by Jacobo Tarrio. Closes: #296307
+    - Added Albanian by Elian Myftiu. Closes: #302398
+    - Added Tagalog by Eric Pareja. Closes: #296409
+    - Updated Basque from Inaki Larranaga Murgoitio. Closes: #306049
+    - Added Vietnamese by Phan Vinh Thinh. Closes: #307015
+
+ -- Bill Allombert <ballombe@debian.org>  Tue,  3 May 2005 17:27:33 +0200
+
+popularity-contest (1.27) unstable; urgency=low
+
+  * Translations
+    - Corrections in Ukrainian uk.po. Closes: #290752
+  * popcon-stat.pl, popcon-process.sh: change the interface to avoid
+    use of xargs which has a length limit.
+  * popcon.pl: compute statistics for source packages. Closes: #291747.
+  * FAQ: Fix typo noticed by Thomas Wana.
+  * debian/rules: use dh_installman instead of dh_installmanpages.
+
+ -- Bill Allombert <ballombe@debian.org>  Fri, 18 Feb 2005 18:35:16 +0100
+
+popularity-contest (1.26) unstable; urgency=low
+
+  * popcon.pl: Accomodate with kfreebsd-gnu new URL.
+             + Add popcon release stats.
+  * popcon-stat.pl: Unclutter the graph.
+                  + Generate the popcon release graph.  
+  * FAQ: Document how to not send popcon email by root. Closes: #264593
+         Thanks Martin Dickopp.
+       + Document when popularity-contest run and recommends anacron.
+         Thanks Martin Rasp.
+  * debian/control: Suggests: anacron.
+  * Remove regexp to catch .pyc files since there are not in packages.
+    Closes: #265360. Thanks Martin v. Loewis.
+
+ -- Bill Allombert <ballombe@debian.org>  Fri, 29 Oct 2004 10:20:28 +0200
+
+popularity-contest (1.25) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Removed Avery Pennarun as uploader on request from
+      Jeroen van Wolffelaar (QA).
+  * Translations
+    - Initial Bulgarian debconf translation bg.po. Closes: #267586
+    - Turkish updated. Closes: #267836
+    - Update German debconf translation de.po
+    - Russian updated. Closes: #268403
+    - Norwegian Bokmal and Nynorsk updated : nb.po and nn.po. Closes: #269908
+    - Korean translation updated ko.po
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue,  7 Sep 2004 08:45:49 +0200
+
+popularity-contest (1.24) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Let postinst and popcon-process.sh use /bin/sh, and make sure
+      the notation in postinst is POSIX compatible.  Patch from David
+      Weinehall.  (Closes: #260088)
+    - Change type of popularity-contest/hostid-failed template from
+      'error' to 'note'.  The former is only available in cdebconf.
+      (Closes: #262426)
+  * Translations
+    - Indonesian update. Closes: #261225
+    - Initial Croatian debconf translation hr.po
+    - Swedish updated. Closes: #261404
+    - Initial Romanian debconf translation hr.po by Eddy Petrisor
+    - Italian updated by Cristian Rigamonti. Closes: #262703
+    - Traditional Chinese updated by Tetralet. Closes: #263182
+    - Finnish updated by Tapio Lehtonen. Closes: #263555
+    - Greek updated by George Papamichelakis.  Closes: #265002
+    - Lithuanian updated by Gintautas Miliauskas.  Closes: #265837
+    - Catalan updated by Aleix Badia i Bosch.  Closes: #261540
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 15 Aug 2004 17:34:28 +0200
+
+popularity-contest (1.23) unstable; urgency=low
+
+  * Translations
+    - Danish update. Closes: #255533
+    - Ukrainian update. Closes: #255523
+    - Japanese update: Closes: #255673
+    - Slovak update. Closes: #255702
+    - Simplified Chinese update. Closes: #256184
+    - Hungarian update. Closes: #256487
+    - Polish update. CLoses: #258558
+    - Basque update. Closes: #259784
+    - Arabic added, from Arabeyes repository
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 24 Jul 2004 19:37:55 +0200
+
+popularity-contest (1.22) unstable; urgency=low
+
+  * Update server-side scripts to current popcon.debian.org version:
+    - popcon.pl: Fix URL for kfreebsd port.
+    - popanal.py: Take care of broken reports with empty POPCONVER field.
+
+ -- Bill Allombert <ballombe@debian.org>  Sun, 20 Jun 2004 10:49:52 +0200
+
+popularity-contest (1.21) unstable; urgency=low
+
+  * Translations
+    - Bosnian update
+    - Greek update
+    - Brazilian Portuguese update. Closes: #251954
+    - Finnish added. Closes: #252302
+    - Portuguese updated. Closes: #252752
+    - Lithuanian updated. Closes: #252809
+    - German update. Closes: #254037
+    - Dutch update. Closes: #253169
+    - Traditional Chinese added. Closes: #253256
+    - Spanish update
+    - Hebrew update. Closes: #254090
+    - Czech update. Closes: #254188
+    - Bosnian update
+  * Christian Perrier
+    - Shorten the main template to fit it in one screen
+      Closes: #250951
+  * Petter Reinholdtsen
+    - Remove nb.po/no.po transition code.  The duplication is now
+      handled by po-debconf via dh_installdebconf.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 19 Jun 2004 00:10:49 +0200
+
+popularity-contest (1.20) unstable; urgency=low
+
+  * Translations
+    - Basque update. Closes: #243768
+    - Norwegian Nynorsk update. Closes: #249681
+  * Change regexp used to find files with relevant atime to handle perl and
+    python libraries.
+
+ -- Bill Allombert <ballombe@debian.org>  Wed, 26 May 2004 12:54:25 +0200
+
+popularity-contest (1.19) unstable; urgency=low
+
+  * Translations
+    - Turkish by Recai Oktas. Closes: #244164
+    - Russian update. Closes: #245000
+    - Slovak by Miroslav Kure. Closes: #245672
+    - French typo corrected.
+  * Bill Allombert
+    - Update server-side scripts to current popcon.debian.org version.
+    - Change popularity-contest to report the popularity-contest version
+      instead of the Debian release which is not reliable.
+    - Update FAQ accordingly.
+    - Fix some typo in FAQ and README.
+
+ -- Bill Allombert <ballombe@debian.org>  Fri, 14 May 2004 11:35:30 +0200
+
+popularity-contest (1.18) unstable; urgency=low
+
+  * Bill Allombert
+    - debian/postinst:
+      + Fix previous attempt to fix MY_HOSTID being equal to EMPTYID.
+      + Fix bogus MY_HOSTID generated by popcon releases affected by #203841.
+        Closes: #240603
+      + Remove check for an impossible error condition.
+    - Add FAQ:
+      + Document valid sender domain problem. Closes: #241383
+      + Document the noatime problem. Closes: #239939
+    - README, debian/popularity.contest.8:
+      + Add pointers to the FAQ.
+    - sync server-side scripts with popcon.debian.org:
+      + Address bug #238004 in popcon.pl w.r.t. wording of per-maintainer
+        reports.
+  * Translations
+    - Basque added by Piarres Beobide. Closes: #243768
+    - French update (removed first person) by Christian Perrier
+
+ -- Bill Allombert <ballombe@debian.org>  Fri, 16 Apr 2004 14:25:04 +0200
+
+popularity-contest (1.17) unstable; urgency=medium
+
+  * Translations
+    - Hungarian by VEROK Istvan. Closes: #242288
+    - Polish by Bartosz Fenski. Closes: #242360
+    - Dutch by Bart Cornelis. Closes: #242382
+    - Hebrew by Lior Kaplan
+    - Indonesian by Parlin Imanuel Toh. Closes: #243296
+  * Petter Reinholdtsen
+    - Uploaded with urgency=medium to get the new translations into
+      Sarge quickly.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue, 13 Apr 2004 10:05:36 +0200
+
+popularity-contest (1.16) unstable; urgency=medium
+
+  * Christian Perrier
+    - Updated Korean debconf translation by Changwoo Ryu
+    - New Ukrainian debconf translation by Eugeniy Meshcheryakov
+      Closes: #239348
+    - Updated Danish debconf translation by Morten Brix Pedersen
+      Closes: #239824
+    - Updated Brazilian portuguese translation by Andre Luis Lopes
+      Closes: #240485
+    - Updated Spanish debconf translation by Ruben Porras
+      Closes: #240723
+    - Updated Swedish debconf translation by Andre Dahlqvist
+      Closes: #240885
+    - Updated Italian debconf translation by Cristian Rigamonti
+      Closes: #241130
+    - Updated Greek debconf translation by Konstantinos Margaritis
+      Closes: #241771
+  * Petter Reinholdtsen
+    - Uploaded with urgency=medium to get the new translations into
+      Sarge quickly.
+
+ -- Christian Perrier <bubulle@debian.org>  Sat,  3 Apr 2004 09:37:33 +0200
+
+popularity-contest (1.15) unstable; urgency=low
+
+  * Bill Allombert
+    - Invalidate the submissions after 20 days instead of 10.
+    - Use uuidgen in postinst to get a random HOSTID. (Closes: #237874)
+    - Add MY_HOSTID sanity chech to popularity-contest.
+  * Petter Reinholdtsen
+    - Updated Norwegian Bokmål and Nynorsk debconf translation,
+      patch from Håvard Korsvoll. (Closes: #238037)
+    - Added Simplified Chinese debconf translation, patch from
+      Carlos Z.F. Liu. (Closes: #238302)
+    - Updated German debconf translation.  Patch from Dennis
+      Stampfer. (Closes: #238953)
+    - Replace MY_HOSTID on upgrades if it is the empty ID mentioned in
+      bug #237874.
+    - Updated Spanish debconf translation.  New file from Ruben Porras.
+  * Christian Perrier
+    - Updated Japaned debconf translation by Kenshi Muto
+    - s/are unable to/could not/ in templates. Unfuzzy translations
+    - Updated Simplified Chinese translation by Carlos Z.F. Liu
+    - Updated Lithuanian translation by Kęstutis Biliūnas.
+    - Updated Czech translation by Miroslav Kure. Closes: #239051
+    - Updated German translation by Dennis Stampfer
+    - Updated Portuguese translation by Miguel Figueiredo. Closes: #239077
+    - Added Russian translation by Ruslan Batdalov. Closes: #238210
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 21 Mar 2004 10:11:41 +0100
+
+popularity-contest (1.14) unstable; urgency=HIGH
+
+  * Petter Reinholdtsen
+    - Urgency HIGH to get the translations into Sarge in time for
+      the d-i beta3.
+    - Make symlink from po/no.po to po/nb.po, to make it more
+      obvious that it is the same file.
+    - Added Catalan debconf translation received from Aleix
+      Badia i Bosch. (Closes: #236639)
+    - Added Italian debconf translation received from
+      Cristian Rigamonti.  (Closes: #236956)
+    - Added Swedish debconf translation received from
+      André Dahlqvist. (Closes: #237129)
+    - Added Lithuanian debconf translation received from
+      Kęstutis Biliūnas. (Closes: #237288)
+    - Added Korean debconf translation received from
+      Changwoo Ryu. (Closes: #237620)
+    - Added Portuguese debconf translation received from
+      Miguel Figueiredo. (Closes: #237858)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 14 Mar 2004 15:37:51 +0100
+
+popularity-contest (1.13) unstable; urgency=low
+
+  * Bill Allombert
+    - Update server-side scripts to current popcon.debian.org version.
+  * Petter Reinholdtsen
+    - Move Norwegian Bokmål debconf translation to nb.po, and
+      install it using language codes 'nb' and 'no' as part of the
+      Norwegian language code transition.
+    - Add info in the README on where to report bugs and how to
+      reach the developers.
+    - Use UTF-8 in debconf template.
+    - Update Brazilian Portuguese debconf translation.  Got new file
+      from Andre Luis Lopes. (Closes: #235387)
+    - Add Greek debconf translation received from Konstantinos
+      Margaritis.  (Closes: #235448)
+    - Add Czech debconf translation received from Miroslav Kure
+      (Closes: #235989)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat,  6 Mar 2004 09:15:43 +0100
+
+popularity-contest (1.12) unstable; urgency=low
+
+  * Use dpkg --print-installation-architecture instead of $Config{archname}
+    to report the platform.
+  * Update server-side scripts to current popcon.debian.org version.
+  * Fix sh scripts to avoid non POSIX test options. (Closes: #231958).
+  * Update French debconf translation, thanks Christian Perrier. 
+    (Closes: #231294)
+  * Update Dutch debconf translation, thanks Bart Cornelis. (Closes: #229752)
+
+ -- Bill Allombert <ballombe@debian.org>  Tue, 10 Feb 2004 17:24:10 +0100
+
+popularity-contest (1.11) unstable; urgency=medium
+
+  * Raise the priority of the participation question from medium to
+    high to make sure it is displayed in the normal Sarge install.
+  * Add Danish debconf translation, thanks to Morten Brix
+    Pedersen (Closing: #230022)
+  * Only generate host ID when it is needed.
+  * Use quotes for all variables in the config file.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 31 Jan 2004 17:39:19 +0100
+
+popularity-contest (1.10) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Added Japanese debconf translation thanks to Kenshi
+      Muto. (Closes: #229538)
+    - Make sure /etc/popularity-contest.conf is readable by user
+      nobody, no matter the umask of root.
+    - Drop the intro note, and show the explanation as part of the
+      participate question. (Closes: #229573)
+    - Update Norwegian Bokmål debconf translation.
+    - Remove the question asking if it is ok to edit MAILTO address,
+      and move the default values into
+      /usr/share/popularity-contest/default.conf. (Closes: #229288, #229111)
+    - Change to use 'dh_perl -d' to only depend on the base perl packages.
+  * Bill Allombert
+    - Update server-side scripts to current popcon.debian.org version.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 26 Jan 2004 22:05:41 +0100
+
+popularity-contest (1.9) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Report error in popcon-largest-unused if
+      /var/log/popularity-contest is missing.
+    - Make sure db_input do not fail if the question already was
+      displayed earlier.  (Closes: #229091, #229092, #229112)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 23 Jan 2004 09:40:57 +0100
+
+popularity-contest (1.8) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Add Dutch debconf template translation (nl.po).  File from
+      Bart Cornelis. (Closes: #217038)
+    - Add URLs to the project home page in manual page and README file.
+    - Make it possible to reconfigure this package by calling
+      'dpkg-reconfigure popularity-contest', to get the code in
+      base-config working as it should. (Closes: #228535).
+      This should still fix bug #135273, as the current PARTICIPATE
+      value is taken from the current config file, and only that
+      variable is modified if the user using debconf change the value.
+    - Collect and report the content of /etc/debian_version.
+    - Start using generic address survey@popcon.debian.org. (Closes: #206830)
+    - Ask if the submit address should be changed on upgrades and
+      reconfigures.  This should activate the new address on old
+      installations.
+    - Updated all translation files with the new question text.
+    - Started on Norwegian Bokmål debconf translation (no.po).
+  * Bill Allombert
+    - control: change exim to exim4. (Closes: #228575)
+    - Update documentation to refer to popcon.debian.org.
+
+ -- Bill Allombert <ballombe@debian.org>  Mon, 22 Jan 2004 09:32:41 -0500
+
+popularity-contest (1.7) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Provide 'popcon', to make it easier to find this package by
+      its common short name. (Closes: #215563)
+    - Add new program popcon-largest-unused.  Script from Yann Dirson,
+      manual page from Petter Reinholdtsen. (Closes: #127633)
+  * Bill Allombert
+    - Rewrite popularity-contest in perl.
+      No user-visible changes outside speed.
+    - Don't use dpkg-architecture anymore. (Closes: #212736)
+    - control: use dpkg-query so depends on dpkg (>= 1.10)
+    - control: remove gawk and dpkg-awk from dependencies.
+    - update copyright notice.
+
+ -- Bill Allombert <ballombe@debian.org>  Mon, 20 Oct 2003 12:04:33 +0200
+
+popularity-contest (1.6) unstable; urgency=low
+
+  * Make new mailing list popcon-developers@lists.alioth.debian.org the
+    maintainer of this package, to make sure all developers get the
+    bug reports.  Updated uploaders to include the new addresses.
+  * Added Bill Allombert as co-maintainer and uploader.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 18 Oct 2003 10:45:58 +0200
+
+popularity-contest (1.5) unstable; urgency=low
+
+  * Set HOME to an existing directory before running
+    /usr/sbin/popularity-contest, to avoid access problems to ~root/. (Closes:
+    #212013)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 29 Sep 2003 23:32:01 +0200
+
+popularity-contest (1.4) unstable; urgency=low
+
+  * Petter Reinholdtsen
+    - Adding myself as uploader.
+    - Add link to Alioth summary page in the README.
+    - Include architecture info in the submissions.  (Closes: #148756, #187736)
+    - Remove useless call to dh_undocumented, previously commented out
+      by Christian Perrier.
+    - Updated popanal.py to process the new arch info, and store
+      resulting summary in results.host_arch and
+      results.host_gnu_type.
+  * Acknowledge NMUs.  (Closes: #135114, #135273, #136510, #137231,
+    #172824, #184608, #187871, #197178, #197230, #201704, #203841)
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 14 Sep 2003 14:25:27 +0200
+
+popularity-contest (1.3-1.3) unstable; urgency=low
+
+  * NMU again
+  * Removed the "Accept here" sentence in debconf templates 
+    as suggested by Joey Hess.
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 29 Aug 2003 11:54:13 +0200
+
+popularity-contest (1.3-1.2) unstable; urgency=low
+
+  * NMU.
+  * Switch to gettext-based debconf templates. Build dependency upon
+    debhelper versioned. Closes: #197178
+  * Debconf templates changed for avoiding "if you say yes". Closes: #197230
+  * Added French debconf templates translation
+  * Added German debconf templates translation. Closes: #137231
+  * Added Brazilian Portuguese debconf templates translation. Closes: #187871
+  * Added Spanish debconf templates translation. Closes: #135114
+  * Removed trailing dot in description synopsis in debian/control
+  * Commented call to now useless dh_undocumented in debian/rules
+  * Get PARTICIPATE value from old config file from potato. Applied
+    patch from Petter Reinholdtsen. Closes: #172824
+  * Lowered the question about participating to medium so that the note
+    is always displayed before asking the question. Closes: #201704
+  * Removed the trailing '  -' in HOSTID generated from new md5sum
+    Closes: #203841
+  * Updated to Standards: 3.6.1 (no change other than above..:-))
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 28 Aug 2003 19:19:50 +0200
+
+popularity-contest (1.3-1.1) unstable; urgency=high
+
+  * NMU.
+  * Do not ship /etc/popularity-contest.conf; don't change it using
+    debconf if it already exists; don't mark it as a conffile (since we
+    don't ship it any more).  (Closes: #135273)
+    This should be sufficient to get popularity-contest back into woody.
+  * #136510 appears to have been fixed in 1.2 or 1.3-1.  (Closes: #136510)
+    (If you want to participate question is now boolean.)
+
+ -- Chris Lawrence <lawrencc@debian.org>  Mon,  1 Apr 2002 21:21:22 -0600
+
+popularity-contest (1.3-1) unstable; urgency=high
+
+  * Change default MAILTO back to apenwarr-survey@debian.org.  Oops!
+    (Closes: #137224)
+
+ -- Avery Pennarun <apenwarr@debian.org>  Thu,  7 Mar 2002 12:39:49 -0500
+
+popularity-contest (1.2) unstable; urgency=low
+
+  * Use debconf.
+
+  * use full path in su (Closes: #125701)
+
+  * repaired description (Closes: #129539)
+
+  * correct handling of sender (sendmail -f) (Closes: #123765)
+
+  * Mostly thanks to Erich Schubert <erich@debian.org>
+
+ -- Avery Pennarun <apenwarr@debian.org>  Thu, 21 Feb 2002 09:11:58 -0500
+
+popularity-contest (1.1-1) unstable; urgency=low
+
+  * Allow overriding the From: and Sender: headers in outgoing mail by
+    adding a new MAIL_FROM variable in /etc/popularity-contest.conf.  Also
+    drop to user "nobody" before running.  Closes: #89530, #39501, #69823, 
+    #74809, #57257, #57709, #65218.  Okay, this was obviously a popular
+    request, but if people would just configure their mailers not to use
+    invalid From: lines by default, they would be a lot happier.
+    
+  * Added a popularity-contest.8 manpage.  Closes: #39501.
+  
+  * Updated README.  Closes: #105668.
+
+ -- Avery Pennarun <apenwarr@debian.org>  Tue,  6 Nov 2001 21:19:38 -0500
+
+popularity-contest (1.0-1) unstable; urgency=low
+
+  * Now runs only once a week instead of once a day.  Fixes bug#53768.
+  
+  * Let sendmail auto-generate the From header.  Fixes bug#48195, bug#48200.
+  
+  * Warnings about Received and Message-Id e-mail lines that may reveal the
+    sender.  Fixes bug#31205.
+    
+  * Actually even version 0.1-2 saved the popcon results to a log file, so
+    that fixes bug#44801.
+    
+  * Uses a more unique ID string than just the hostname, and it persists
+    across hostname changes.
+
+ -- Avery Pennarun <apenwarr@debian.org>  Wed, 23 Dec 1998 14:28:37 -0500
+
+popularity-contest (0.1-2) frozen unstable; urgency=low
+
+  * Added a missing dependency on mail-transport-agent; fixed bug#31010.
+
+ -- Avery Pennarun <apenwarr@debian.org>  Wed, 23 Dec 1998 14:28:37 -0500
+
+popularity-contest (0.1) frozen unstable; urgency=low
+
+  * Use a valid From_ address for sendmail; fixes bug#30341.
+  
+  * popularity-contest.8 is a link to the undocumented(8) man page, and we
+    provide a README file in /usr/doc; downgrades bug#28745.
+    
+  * Include my post-processing scripts in /usr/doc/popularity-contest/examples
+  
+  * No longer tries to report on packages that aren't installed.
+
+ -- Avery Pennarun <apenwarr@debian.org>  Sun, 20 Dec 1998 16:11:02 -0500
+
+popularity-contest (0.00) unstable; urgency=low
+
+  * Initial test release.
+
+ -- Avery Pennarun <apenwarr@debian.org>  Sat, 24 Oct 1998 22:33:58 -0400

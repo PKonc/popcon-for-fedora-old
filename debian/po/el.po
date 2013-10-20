@@ -1,0 +1,70 @@
+# translation of popularity_el.po to el
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
+#    Developers do not need to manually edit POT or PO files.
+#
+# George Papamichelakis <george@step.gr>, 2004.
+# quad-nrg.net <yodesy@quad-nrg.net>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: popularity_el\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-07-29 12:23+0200\n"
+"PO-Revision-Date: 2006-09-04 17:05+0300\n"
+"Last-Translator: quad-nrg.net <yodesy@quad-nrg.net>\n"
+"Language-Team: el <debian-l10n-greek@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid "Participate in the package usage survey?"
+msgstr "Θέλετε να συμμετάσχετε στην έρευνα χρήσης των πακέτων;"
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"The system may anonymously supply the distribution developers with "
+"statistics about the most used packages on this system.  This information "
+"influences decisions such as which packages should go on the first "
+"distribution CD."
+msgstr ""
+"Το σύστημα μπορεί να διαθέτει ανώνυμα στους προγραμματιστές της διανομής "
+"Debian στατιστικά στοιχεία σχετικά με τα περισσότερο χρησιμοποιούμενα πακέτα "
+"σ' αυτό.Οι πληροφορίες αυτές επηρεάζουν αποφάσεις όπως πχ. το ποια πακέτα "
+"πρέπει να συμπεριλαμβάνονται στο πρώτο CD του Debian."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"If you choose to participate, the automatic submission script will run once "
+"every week, sending statistics to the distribution developers. The collected "
+"statistics can be viewed on http://popcon.debian.org/."
+msgstr ""
+"Αν επιλέξετε να συμμετάσχετε, το σενάριο αυτόματης υποβολής θα εκτελείται "
+"μια φορά την εβδομάδα, στέλνοντας στατιστικά στους προγραμματιστές της "
+"διανομής τουDebian. Τα στατιστικά στοιχεία που συλλέγονται μπορούν να "
+"βρεθούν στον δικτυακό τόπο http://popcon.debian.org/."
+
+#. Type: boolean
+#. Description
+#: ../templates:4
+msgid ""
+"This choice can be later modified by running \"dpkg-reconfigure popularity-"
+"contest\"."
+msgstr ""
+"Η επιλογή αυτή μπορεί να τροποποιηθεί αργότερα εκτελώντας την εντολή \"dpkg-"
+"reconfigure popularity-contest\"."
