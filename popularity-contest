@@ -28,18 +28,10 @@ use 5.6.0;
 my $popcon_conf="/etc/popularity-contest.conf";
 my $os_release ="/etc/os-release";
 my $dpkg_db = "/var/lib/dpkg/info";
-my $RPM_SYSTEM = 0;
 
 
 #Detecting RPM system
-if (open(CONFIG, "<", $popcon_conf))
-{
-  while (<CONFIG>)
-  {
-    $RPM_SYSTEM = 1 if /^RPM_SYSTEM="yes"$/;
-  }
-  close(CONFIG);
-}
+my $RPM_SYSTEM = qx(unset RPM_SYSTEM; . $popcon_conf; echo \$RPM_SYSTEM );
 
 # $popcon_conf is in shell-script format
 my $HOSTID = qx(unset MY_HOSTID; . $popcon_conf; echo \$MY_HOSTID );
