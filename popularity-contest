@@ -69,14 +69,23 @@ my $popconver = $RPM_SYSTEM ? `rpm -q rpm --queryformat='\%{VERSION}'` :
 # Vendor
 my $vendor="unknown";
 
-if (open(VENDOR, "<", $dpkg_origin))
+if (!$RPM_SYSTEM)
 {
-  while (<VENDOR>)
+  if (open(VENDOR, "<", $dpkg_origin))
   {
-    m/^Vendor: *(.*)/ and $vendor=$1;
+    while (<VENDOR>)
+    {
+      m/^Vendor: *(.*)/ and $vendor=$1;
+    }
+    close(VENDOR);
   }
-  close(VENDOR);
-} 
+}
+
+else
+{
+  $vendor = qx(unset NAME; . $os_release; echo \$NAME );
+  chomp $vendor;
+}
 
 # Initialise time computations
 my $now = time;
