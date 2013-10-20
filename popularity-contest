@@ -25,8 +25,9 @@
 use strict;
 use 5.6.0;
 
-my $popcon_conf="/etc/popularity-contest.conf";
-my $os_release ="/etc/os-release";
+my $popcon_conf = "/etc/popularity-contest.conf";
+my $os_release = "/etc/os-release";
+my $dpkg_origin = "/etc/dpkg/origins/default"; 
 my $dpkg_db = "/var/lib/dpkg/info";
 
 
@@ -68,14 +69,14 @@ my $popconver = $RPM_SYSTEM ? `rpm -q rpm --queryformat='\%{VERSION}'` :
 # Vendor
 my $vendor="unknown";
 
-if(open(VENDOR, "<", $os_release))
+if (open(VENDOR, "<", $dpkg_origin))
 {
   while (<VENDOR>)
   {
-    m/^NAME=(["])(.*)\1/ and $vendor=$2;
+    m/^Vendor: *(.*)/ and $vendor=$1;
   }
   close(VENDOR);
-}
+} 
 
 # Initialise time computations
 my $now = time;
