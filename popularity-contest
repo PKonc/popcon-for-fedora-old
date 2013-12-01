@@ -73,8 +73,18 @@ given ($PACKAGE_SYSTEM)
 chomp $arch;
 
 # Popcon release
-my $popconver = $RPM_SYSTEM =~ /^yes$/ ? `rpm -q rpm --queryformat='\%{VERSION}'` :
- `dpkg-query --showformat='\${version}' --show popularity-contest`;
+my $popconver = undef; 
+given ($PACKAGE_SYSTEM)
+{ 
+  when ('rpm') {$popconver = `rpm -q popularity-contest --queryformat='\%{VERSION}'`;}
+  when ('deb') {$popconver = `dpkg-query --showformat='\${version}' --show popularity-contest`;}
+  default 
+  {
+	print STDERR "Error: PACKAGE_SYSTEM is set to incorrect value\n";
+	print STDERR "Please edit $popcon_conf to use a valid PACKAGE_SYSTEM value\n";
+  }
+}
+chomp $popconver;
 
 # Vendor
 my $vendor="unknown";
