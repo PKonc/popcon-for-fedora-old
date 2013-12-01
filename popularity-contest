@@ -88,24 +88,27 @@ chomp $popconver;
 
 # Vendor
 my $vendor="unknown";
-
-if ($RPM_SYSTEM !~ /^yes$/)
-{
-  if (open(VENDOR, "<", $dpkg_origin))
+given ($PACKAGE_SYSTEM)
+{ 
+  when ('rpm') {$vendor = qx(unset NAME; . $os_release; echo \$NAME);}
+  when ('deb') 
   {
-    while (<VENDOR>)
+    if (open(VENDOR, "<", $dpkg_origin))
     {
-      m/^Vendor: *(.*)/ and $vendor=$1;
+      while (<VENDOR>)
+      {
+        m/^Vendor: *(.*)/ and $vendor=$1;
+      }
+      close(VENDOR);
     }
-    close(VENDOR);
+  }
+  default 
+  {
+	print STDERR "Error: PACKAGE_SYSTEM is set to incorrect value\n";
+	print STDERR "Please edit $popcon_conf to use a valid PACKAGE_SYSTEM value\n";
   }
 }
-
-else
-{
-  $vendor = qx(unset NAME; . $os_release; echo \$NAME );
-  chomp $vendor;
-}
+chomp $vendor;
 
 # Initialise time computations
 my $now = time;
