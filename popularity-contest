@@ -24,15 +24,15 @@
 
 use strict;
 use 5.6.0;
+use feature qw(switch);
 
 my $popcon_conf = "/etc/popularity-contest.conf";
 my $os_release = "/etc/os-release";
 my $dpkg_origin = "/etc/dpkg/origins/default"; 
 my $dpkg_db = "/var/lib/dpkg/info";
 
-
-#Detecting RPM system
-my $RPM_SYSTEM = qx(unset RPM_SYSTEM; . $popcon_conf; echo \$RPM_SYSTEM );
+#Detecting package system
+my $PACKAGE_SYSTEM = qx(unset PACKAGE_SYSTEM; . $popcon_conf; echo \$PACKAGE_SYSTEM );
 
 # $popcon_conf is in shell-script format
 my $HOSTID = qx(unset MY_HOSTID; . $popcon_conf; echo \$MY_HOSTID );
