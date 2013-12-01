@@ -33,10 +33,10 @@ my $dpkg_db = "/var/lib/dpkg/info";
 
 #Detecting package system
 my $PACKAGE_SYSTEM = qx(unset PACKAGE_SYSTEM; . $popcon_conf; echo \$PACKAGE_SYSTEM );
+chomp $PACKAGE_SYSTEM;
 
 # $popcon_conf is in shell-script format
 my $HOSTID = qx(unset MY_HOSTID; . $popcon_conf; echo \$MY_HOSTID );
-
 chomp $HOSTID;
 
 if ( $HOSTID eq "")
@@ -59,7 +59,17 @@ if ( $HOSTID !~ /^([a-f0-9]{32})$/)
 }
 
 # Architecture.
-my $arch = $RPM_SYSTEM =~ /^yes$/ ? `rpm --eval '\%{_arch}'` : `dpkg --print-architecture`;
+my $arch = undef; 
+given ($PACKAGE_SYSTEM)
+{ 
+  when ('rpm') {$arch = `rpm --eval '\%{_arch}'`;}
+  when ('deb') {$arch = `dpkg --print-architecture`;}
+  default 
+  {
+	print STDERR "Error: PACKAGE_SYSTEM is set to incorrect value\n";
+	print STDERR "Please edit $popcon_conf to use a valid PACKAGE_SYSTEM value\n";
+  }
+}
 chomp $arch;
 
 # Popcon release
