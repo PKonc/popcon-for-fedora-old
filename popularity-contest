@@ -206,6 +206,24 @@ if ($PACKAGE_SYSTEM eq 'deb')
   close PACKAGES;
 }
 
+# When system uses rpm
+
+elsif ($PACKAGE_SYSTEM eq 'rpm') 
+{
+  # Read rpm database of installed packages
+  open PACKAGES, "rpm -qa --queryformat='\%{NAME}\\n'|";
+
+  while (<PACKAGES>)
+  {
+    my $pkg = $_;
+    chomp $pkg;
+    my $bestatime = undef;
+    my $list;
+    $popcon{$pkg}=[0,0,$pkg,"<NOFILES>"];
+  }
+  close PACKAGES;
+}
+
 # We're not done yet.  Sort the output in reverse by atime, and
 # add a header/footer.
 
