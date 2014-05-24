@@ -211,6 +211,7 @@ if ($PACKAGE_SYSTEM eq 'deb')
 elsif ($PACKAGE_SYSTEM eq 'rpm') 
 {
   # Read rpm database of installed packages
+  use RPM2;
   open PACKAGES, "rpm -qa --queryformat='\%{NAME}\\n'|";
 
   while (<PACKAGES>)
@@ -220,6 +221,16 @@ elsif ($PACKAGE_SYSTEM eq 'rpm')
     my $bestatime = undef;
     my $list;
     $popcon{$pkg}=[0,0,$pkg,"<NOFILES>"];
+
+    my $rpm_db = RPM2->open_rpm_db();
+    my $pkg_iter = $rpm_db->find_by_name_iter($pkg);
+    while (my $act_pkg = $pkg_iter->next()) 
+    {
+	foreach($act_pkg->files()) 
+	{
+		#TODO
+	}
+    }
   }
   close PACKAGES;
 }
