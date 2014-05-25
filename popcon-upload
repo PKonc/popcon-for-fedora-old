@@ -5,6 +5,11 @@
 use strict;
 use IO::Socket;
 
+#Detecting package system
+my $popcon_conf = "/etc/popularity-contest.conf";
+my $PACKAGE_SYSTEM = qx(unset PACKAGE_SYSTEM; . $popcon_conf; echo \$PACKAGE_SYSTEM );
+chomp $PACKAGE_SYSTEM;
+
 my %opts;
 
 # Not using Getopt::Std to avoid perl-modules dependency
