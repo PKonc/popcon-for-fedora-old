@@ -228,7 +228,42 @@ elsif ($PACKAGE_SYSTEM eq 'rpm')
     {
 	foreach($act_pkg->files()) 
 	{
-		#TODO
+          chomp;
+	  next unless (
+	    ( m{/bin/|/sbin/|/lib/.+/|^/usr/games/|\.[ah]$|\.pm$|\.php$|^/boot/System\.map-}
+	      && ! m{/lib/.+-.+-.+/}
+	      || defined $mapped{$_} )
+	    && -f $_);
+	  my($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,
+	    $atime,$mtime,$ctime,$blksize,$blocks)
+	    = stat;
+	  if (defined $mapped{$_}) {
+	  # It's currently being accessed by a process
+	    $atime = time();
+	  }
+	  if (!defined($bestatime) || $atime >= $bestatime)
+	  {
+ 	  # Truncate time to reduce informaton leak.
+	    my $tatime = &trunc_time($atime);
+	    my $tctime = &trunc_time($ctime);
+	    $bestatime=$atime;
+	    if ($atime < $lastmonth)
+	    {
+	    # Not accessed since more than 30 days.
+	      $popcon{$pkg}=[$tatime,$tctime,$pkg,$_,"<OLD>"];
+	    }
+	    elsif ($ctime > $lastmonth && $atime-$ctime < $daylen)
+	    {
+	    # Installed/upgraded less than a month ago and not used after
+    	    # install/upgrade day.
+	      $popcon{$pkg}=[$tatime,$tctime,$pkg,$_,"<RECENT-CTIME>"];
+	    }
+	    else
+	    {
+	    # Else we `vote' for the package.
+	      $popcon{$pkg}=[$tatime,$tctime,$pkg,$_];
+	    }
+	  }
 	}
     }
   }
